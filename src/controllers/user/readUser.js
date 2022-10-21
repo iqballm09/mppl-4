@@ -1,4 +1,4 @@
-const User = require("../models/User");
+const User = require("../../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken');
 dotenv = require("dotenv");
@@ -26,8 +26,8 @@ const getUserByEmail = async (req, res) => {
     const validPassword = await bcrypt.compare(req.body.password, user.password);
     if (!validPassword) return res.status(400).send("Invalid password!");
     // Create and assign token
-    const token = jwt.sign({ id: user.id, email: user.email }, process.env.TOKEN_SECRET);
-    res.header('auth-token', token).status(202).send("Logged in!");
+    const token = jwt.sign({ email: user.email }, process.env.TOKEN_SECRET);
+    res.header('auth-token', token).status(202).send("Logged In!");
 }
 
 module.exports = {
