@@ -40,7 +40,7 @@ const Card = sequelize.define('Card', {
 
 // Define associations
 Card.associate = function() {
-    Card.belongsTo(User);
+    Card.belongsTo(User, {foreignKey: 'UserID'});
 }
 
 module.exports = Card;

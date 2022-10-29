@@ -4,31 +4,3 @@ npx sequelize db:migrate
 npx sequelize migration:create --name namaAksi_table_namaTabel
 // undo migration
 npx sequelize db:migrate:undo
-
-// 'use strict';
-
-// /** @type {import('sequelize-cli').Migration} */
-// module.exports = {
-//   up(queryInterface, Sequelize) {
-//     return queryInterface.addColumn(
-//       'cards', // name of Source model
-//       'UserEmail', // name of the key we're adding 
-//       {
-//         type: Sequelize.UUID,
-//         references: {
-//           model: 'User', // name of Target model
-//           key: 'email', // key in Target model that we're referencing
-//         },
-//         onUpdate: 'CASCADE',
-//         onDelete: 'SET NULL',
-//       }
-//     );
-//   },
-
-//   down: (queryInterface, Sequelize) => {
-//     return queryInterface.removeColumn(
-//       'cards', // name of Source model
-//       'UserEmail' // key we want to remove
-//     );
-//   }
-// };
