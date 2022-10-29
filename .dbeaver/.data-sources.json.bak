@@ -1,0 +1,31 @@
+{
+	"folders": {},
+	"connections": {
+		"sqlite_jdbc-18423ec6e54-69efb1c0f94eae07": {
+			"provider": "sqlite",
+			"driver": "sqlite_jdbc",
+			"name": "foodpay.db",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"database": "/home/iqballm09/Documents/my_projects/mppl-4-main/src/foodpay.db",
+				"url": "jdbc:sqlite:/home/iqballm09/Documents/my_projects/mppl-4-main/src/foodpay.db",
+				"configurationType": "MANUAL",
+				"type": "dev",
+				"auth-model": "native",
+				"handlers": {}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"auto-close-transactions": false
+		}
+	}
+}

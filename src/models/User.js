@@ -2,11 +2,15 @@ const Sequelize = require('sequelize');
 const sequelize = require("../database/connection");
 
 const User = sequelize.define('User', {
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
     email: {
         type: Sequelize.STRING(50),
         unique: true,
         allowNull: false,
-        primaryKey: true,
         validate: {
             notNull: { msg: 'User must have a email' },
             notEmpty: { msg: 'email must not be empty' },
@@ -19,18 +23,10 @@ const User = sequelize.define('User', {
             notEmpty: { msg: 'name must not be empty' }
         }
     },
-
     password: {
         type: Sequelize.STRING(1024),
         validate: {
             notEmpty: { msg: 'password must not be empty' }
-        }
-    },
-    pinNumber: {
-        type: Sequelize.STRING(1024),
-        defaultValue: "000000",
-        validate: {
-            notEmpty: { msg: 'pin number must not be empty' },
         }
     },
     phoneNumber: {
