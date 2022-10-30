@@ -37,7 +37,7 @@ const Menu = sequelize.define('Menu', {
 
 // Define association
 Menu.associate = function () {
-    Menu.hasMany(models.Transaction, { foreignKey: "MenuID" });
+    Menu.hasMany(models.Transaction, { foreignKey: 'MenuID' });
 }
 
 module.exports = Menu;

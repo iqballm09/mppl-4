@@ -27,7 +27,7 @@ const Payment = sequelize.define("Payment", {
 
 // Define association
 Payment.associate = function() {
-    Payment.hasOne(models.Transaction, { foreignKey: "PaymentID" });
+    Payment.hasOne(models.Transaction, { foreignKey: 'PaymentID' });
 }
 
 module.exports = Payment;

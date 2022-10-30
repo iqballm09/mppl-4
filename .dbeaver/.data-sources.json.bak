@@ -1,7 +1,7 @@
 {
 	"folders": {},
 	"connections": {
-		"sqlite_jdbc-18423ec6e54-69efb1c0f94eae07": {
+		"sqlite_jdbc-18424a4d223-73ed32e10a5482bc": {
 			"provider": "sqlite",
 			"driver": "sqlite_jdbc",
 			"name": "foodpay.db",

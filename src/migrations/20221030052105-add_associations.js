@@ -134,7 +134,7 @@ module.exports = {
           'transactions', // name of Target model
           'PaymentID', // name of the key we're adding
           {
-            type: Sequelize.UUID,
+            type: Sequelize.INTEGER,
             references: {
               model: 'payments', // name of Source model
               key: 'id',
@@ -197,7 +197,7 @@ module.exports = {
         // remove Payment hasOne Order
         return queryInterface.removeColumn(
           'transactions', // name of the Target model
-          'PaymentId' // key we want to remove
+          'PaymentID' // key we want to remove
         );
       })
   }
