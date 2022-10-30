@@ -40,7 +40,9 @@ const Card = sequelize.define('Card', {
 
 // Define associations
 Card.associate = function() {
-    Card.belongsTo(User, {foreignKey: 'UserID'});
+    Card.belongsTo(models.User, { foreignKey: 'UserID' });
+    Card.hasMany(models.TopUp, { foreignKey: "CardID" });
+    Card.hasMany(models.Payment, { foreignKey: "CardID" });
 }
 
 module.exports = Card;

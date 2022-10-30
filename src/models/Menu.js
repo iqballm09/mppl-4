@@ -7,6 +7,9 @@ const Menu = sequelize.define('Menu', {
         primaryKey: true,
         autoIncrement: true
     },
+    MerchantID: {
+        type: Sequelize.INTEGER
+    },
     name: {
         type: Sequelize.STRING(100),
         allowNull: false,
@@ -31,5 +34,10 @@ const Menu = sequelize.define('Menu', {
         }
     }
 });
+
+// Define association
+Menu.associate = function () {
+    Menu.hasMany(models.Transaction, { foreignKey: "MenuID" });
+}
 
 module.exports = Menu;

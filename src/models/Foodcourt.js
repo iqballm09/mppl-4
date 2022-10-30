@@ -1,6 +1,5 @@
 const Sequelize = require("Sequelize");
 const sequelize = require("../database/connection");
-const Merchant = require("./Merchant");
 
 const FoodCourt = sequelize.define("FoodCourt", {
     id: {
@@ -41,7 +40,7 @@ const FoodCourt = sequelize.define("FoodCourt", {
 
 // Define association
 FoodCourt.associate = function() {
-    FoodCourt.hasMany(Merchant);
+    FoodCourt.hasMany(models.Merchant, { foreignKey: "FoodCourtID" });
 }
 
 module.exports = FoodCourt;

@@ -7,6 +7,18 @@ const Transaction = sequelize.define("Transaction", {
         primaryKey: true,
         autoIncrement: true
     },
+    UserID: {
+        type: Sequelize.INTEGER
+    },
+    MerchantID: {
+        type: Sequelize.INTEGER
+    },
+    PaymentID: {
+        type: Sequelize.INTEGER
+    },
+    MenuID: {
+        type: Sequelize.INTEGER
+    },
     menuName: {
         type: Sequelize.STRING(100)
     },
@@ -31,5 +43,10 @@ const Transaction = sequelize.define("Transaction", {
         type: Sequelize.DATEONLY
     }
 });
+
+// Define associations
+Transaction.associate = function() {
+    Transaction.belongsTo(models.User, { foreignKey: 'UserID' });
+}
 
 module.exports = Transaction;
