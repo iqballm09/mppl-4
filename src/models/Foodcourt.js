@@ -39,7 +39,7 @@ const FoodCourt = sequelize.define("FoodCourt", {
 });
 
 // Define association
-FoodCourt.associate = function () {
+FoodCourt.associate = function (models) {
     FoodCourt.hasMany(models.Merchant, { foreignKey: 'FoodCourtID' });
 }
 

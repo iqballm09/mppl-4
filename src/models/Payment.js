@@ -8,7 +8,11 @@ const Payment = sequelize.define("Payment", {
         autoIncrement: true
     },
     CardID: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+            model: 'cards',
+            key: 'id'
+        }
     },
     amount: {
         type: Sequelize.DECIMAL(20),
@@ -26,7 +30,8 @@ const Payment = sequelize.define("Payment", {
 });
 
 // Define association
-Payment.associate = function() {
+Payment.associate = function (models) {
+    Payment.belongsTo(models.Card, { foreignKey: 'CardID' });
     Payment.hasOne(models.Transaction, { foreignKey: 'PaymentID' });
 }
 

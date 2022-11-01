@@ -8,7 +8,11 @@ const TopUp = sequelize.define("TopUp", {
         autoIncrement: true
     },
     CardID: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+            model: 'cards',
+            key: 'id'
+        }
     },
     amount: {
         type: Sequelize.DECIMAL(20),
@@ -28,5 +32,11 @@ const TopUp = sequelize.define("TopUp", {
         type: Sequelize.DATEONLY
     }
 });
+
+// Define associations
+TopUp.associate = function (models) {
+    TopUp.belongsTo(models.Card, { foreignKey: 'CardID' });
+}
+
 
 module.exports = TopUp;

@@ -10,7 +10,11 @@ const Card = sequelize.define('Card', {
         autoIncrement: true
     },
     UserID: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+            model: 'users',
+            key: 'id'
+        }
     },
     name: {
         type: Sequelize.STRING(100),
@@ -39,7 +43,7 @@ const Card = sequelize.define('Card', {
 });
 
 // Define associations
-Card.associate = function() {
+Card.associate = function (models) {
     Card.belongsTo(models.User, { foreignKey: 'UserID' });
     Card.hasMany(models.TopUp, { foreignKey: 'CardID' });
     Card.hasMany(models.Payment, { foreignKey: 'CardID' });

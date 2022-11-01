@@ -9,9 +9,6 @@ module.exports = {
         primaryKey: true,
         autoIncrement: true
     },
-    MerchantID: {
-        type: Sequelize.INTEGER
-    },
     name: {
         type: Sequelize.STRING(100),
         allowNull: false,

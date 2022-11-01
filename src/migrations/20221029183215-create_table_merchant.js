@@ -9,9 +9,6 @@ module.exports = {
         primaryKey: true,
         autoIncrement: true
       },
-      FoodCourtID: {
-        type: Sequelize.INTEGER
-      },
       username: {
         type: Sequelize.STRING(100),
         unique: true,

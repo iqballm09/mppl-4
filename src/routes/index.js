@@ -7,7 +7,6 @@ const { getUserByEmail, getAllUsers } = require('../controllers/user/readUser');
 const { getCardByUserID, getAllCards } = require('../controllers/card/readCard');
 const updateCard = require("../controllers/card/updateCard");
 const updateUser = require("../controllers/user/updateUser");
-const readPost = require("../controllers/posts/readPost");
 const createCard = require("../controllers/card/createCard");
 
 // Create User Endpoints
@@ -22,7 +21,5 @@ router.get('/cards', getAllCards);
 router.get('/cards/UserID', getCardByUserID);
 router.put('/cards/UserID/edit', verify, updateCard);
 
-
-router.get('/posts', verify, readPost);
 
 module.exports = router;

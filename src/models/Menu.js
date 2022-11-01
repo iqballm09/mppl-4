@@ -8,7 +8,11 @@ const Menu = sequelize.define('Menu', {
         autoIncrement: true
     },
     MerchantID: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+            model: 'merchants',
+            key: 'id'
+        }
     },
     name: {
         type: Sequelize.STRING(100),
@@ -36,8 +40,9 @@ const Menu = sequelize.define('Menu', {
 });
 
 // Define association
-Menu.associate = function () {
+Menu.associate = function (models) {
     Menu.hasMany(models.Transaction, { foreignKey: 'MenuID' });
+    Menu.belongsTo(models.Merchant, { foreignKey: 'MerchantID' })
 }
 
 module.exports = Menu;

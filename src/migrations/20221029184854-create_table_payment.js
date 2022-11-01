@@ -9,9 +9,6 @@ module.exports = {
         primaryKey: true,
         autoIncrement: true
       },
-      CardID: {
-        type: Sequelize.INTEGER
-      },
       amount: {
         type: Sequelize.DECIMAL(20),
         defaultValue: 0
