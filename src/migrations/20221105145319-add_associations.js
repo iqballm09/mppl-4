@@ -116,11 +116,11 @@ module.exports = {
         // Card hasMany Payment
         return queryInterface.addColumn(
           'transactions', // name of Target model
-          'MenuID', // name of the key we're adding
+          'OrderID', // name of the key we're adding
           {
             type: Sequelize.INTEGER,
             references: {
-              model: 'menus', // name of Source model
+              model: 'orders', // name of Source model
               key: 'id',
             },
             onUpdate: 'CASCADE',
@@ -129,14 +129,14 @@ module.exports = {
         );
       })
       .then(() => {
-        // Payment hasOne Order
+        // Card hasMany Payment
         return queryInterface.addColumn(
-          'transactions', // name of Target model
-          'PaymentID', // name of the key we're adding
+          'orders', // name of Target model
+          'MenuID', // name of the key we're adding
           {
             type: Sequelize.INTEGER,
             references: {
-              model: 'payments', // name of Source model
+              model: 'menus', // name of Source model
               key: 'id',
             },
             onUpdate: 'CASCADE',
@@ -190,15 +190,14 @@ module.exports = {
       .then(() => {
         return queryInterface.removeColumn(
           'transactions', // name of Source model
-          'MenuID' // key we want to remove
+          'OrderID' // key we want to remove
         )
       })
       .then(() => {
-        // remove Payment hasOne Order
         return queryInterface.removeColumn(
-          'transactions', // name of the Target model
-          'PaymentID' // key we want to remove
-        );
+          'orders', // name of Source model
+          'MenuID' // key we want to remove
+        )
       })
   }
 };

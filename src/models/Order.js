@@ -1,27 +1,27 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../database/connection");
 
-const Menu = sequelize.define('Menu', {
+const Order = sequelize.define('Order', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    MerchantID: {
+    MenuID: {
         type: Sequelize.INTEGER,
         references: {
-            model: 'merchants',
+            model: 'menus',
             key: 'id'
         }
     },
-    name: {
+    nameMenu: {
         type: Sequelize.STRING(100),
         allowNull: false,
         validate: {
             notEmpty: { msg: "Menu must have a value" }
         }
     },
-    price: {
+    priceMenu: {
         type: Sequelize.DECIMAL(20),
         allowNull: false,
         defaultValue: 0,
@@ -30,9 +30,10 @@ const Menu = sequelize.define('Menu', {
         }
     },
     // Tipe menu: makanan dan minuman
-    type: {
-        type: Sequelize.STRING(50),
+    qty: {
+        type: Sequelize.INTEGER,
         allowNull: false,
+        defaultValue: 1,
         validate: {
             notEmpty: { msg: "Menu must have value" },
             notNull: { msg: "Menu must not null" }
@@ -41,9 +42,9 @@ const Menu = sequelize.define('Menu', {
 });
 
 // Define association
-Menu.associate = function (models) {
-    Menu.hasMany(models.Order, { foreignKey: 'MenuID' });
-    Menu.belongsTo(models.Merchant, { foreignKey: 'MerchantID' })
+Order.associate = function (models) {
+    Order.hasMany(models.Transaction, { foreignKey: 'OrderID' });
+    Order.belongsTo(models.Menu, { foreignKey: 'MenuID' })
 }
 
-module.exports = Menu;
+module.exports = Order;

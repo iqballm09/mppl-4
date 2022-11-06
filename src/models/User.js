@@ -41,7 +41,7 @@ const User = sequelize.define('User', {
 // Define associations
 User.associate = function (models) {
     User.hasMany(models.Transaction, { foreignKey: 'UserID' });
-    User.hasMany(models.Card, { foreignKey: 'UserID' });
+    User.hasOne(models.Card, { foreignKey: 'UserID' });
 }
 
 module.exports = User;

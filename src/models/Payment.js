@@ -1,4 +1,4 @@
-const Sequelize = require("Sequelize");
+const Sequelize = require("sequelize");
 const sequelize = require("../database/connection");
 
 const Payment = sequelize.define("Payment", {
@@ -32,7 +32,7 @@ const Payment = sequelize.define("Payment", {
 // Define association
 Payment.associate = function (models) {
     Payment.belongsTo(models.Card, { foreignKey: 'CardID' });
-    Payment.hasOne(models.Transaction, { foreignKey: 'PaymentID' });
+    Payment.belongsTo(models.Transaction, { foreignKey: 'TransactionID' });
 }
 
 module.exports = Payment;

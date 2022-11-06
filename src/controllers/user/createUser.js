@@ -1,7 +1,7 @@
 const User = require("../../models/User");
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-dotenv = require("dotenv");
+const Card = require("../../models/Card");
+const dotenv = require("dotenv");
 
 dotenv.config();
 
@@ -12,10 +12,10 @@ const createUser = async (req, res) => {
         const emailExist = await User.findOne({ 
             where: { email: req.body.email } 
         });
-        if (emailExist) return res.status(400).send("Email has been used!");
+        if (emailExist) return res.status(400).send(`Email: ${req.body.email} has been used!`);
         // Hash password
-        const salt = await bcrypt.genSalt(15);
-        const hashPassword = await bcrypt.hash(req.body.password, salt);
+        const saltUser = await bcrypt.genSalt(15);
+        const hashPassword = await bcrypt.hash(req.body.password, saltUser);
         // Create new user
         const user = await User.create({
             name: req.body.name,
@@ -23,10 +23,17 @@ const createUser = async (req, res) => {
             password: hashPassword,
             phoneNumber: req.body.phoneNumber
         });
-        // Create register token
-        const token = jwt.sign({ email: user.email }, process.env.REGISTER_TOKEN);
-        res.header('reg-token', token);
-        return res.status(201).json({ user });
+        await user.save();
+        // Insert pin number
+        const saltCard = await bcrypt.genSalt(16);
+        const hashPin = await bcrypt.hash(req.body.pinNumber, saltCard);
+        // Create card
+        const card = await Card.create({
+            UserID: user.id,
+            pinNumber: hashPin
+        });
+        await card.save();
+        return res.status(201).json({ user, card });
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }

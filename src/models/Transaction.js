@@ -1,4 +1,4 @@
-const Sequelize = require("Sequelize");
+const Sequelize = require("sequelize");
 const sequelize = require("../database/connection");
 
 const Transaction = sequelize.define("Transaction", {
@@ -21,24 +21,17 @@ const Transaction = sequelize.define("Transaction", {
             key: 'id'
         }
     },
-    PaymentID: {
+    OrderID: {
         type: Sequelize.INTEGER,
         references: {
-            model: 'payments',
+            model: 'orders',
             key: 'id'
         }
     },
-    MenuID: {
-        type: Sequelize.INTEGER,
-        references: {
-            model: 'menus',
-            key: 'id'
-        }
-    },
-    menuName: {
+    nameMenu: {
         type: Sequelize.STRING(100)
     },
-    price: {
+    priceMenu: {
         type: Sequelize.DECIMAL(20),
         defaultValue: 0,
         validate: {
@@ -63,9 +56,9 @@ const Transaction = sequelize.define("Transaction", {
 // Define associations
 Transaction.associate = function (models) {
     Transaction.belongsTo(models.User, { foreignKey: 'UserID' });
-    Transaction.belongsTo(models.Menu, { foreignKey: 'MenuID' });
+    Transaction.belongsTo(models.Order, { foreignKey: 'OrderID' });
     Transaction.belongsTo(models.Merchant, { foreignKey: 'MerchantID' });
-    Transaction.belongsTo(models.Payment, { foreignKey: 'PaymentID' });
+    Transaction.hasOne(models.Payment, { foreignKey: 'TransactionID' });
 }
 
 module.exports = Transaction;

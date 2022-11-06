@@ -1,19 +1,19 @@
-const User = require("../../models/User");
 const Card = require("../../models/Card");
 const bcrypt = require("bcryptjs");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const updateCard = async (req, res) => {
     let hashNewPin, updatedPinNumber;
     // Get payload
-    const email = req.user.email;
-    const user = await User.findOne({
-        where: { email: email }
-    });
-    if (!user) return res.status(404).send("User not found");
-    // Read user card
+    const userID = req.user.id;
     const card = await Card.findOne({
-        where: { UserID: user.id }
+        where: {
+            UserID: userID
+        }
     });
+    if (!card) return res.status(404).send(`Card with UserID: ${userID} is not found`);
     // Change pin number. statusCPN = Status of Change Pin Number
     if (req.body.statusCPN === true) {
         if (req.body.oldPinNumber) {
@@ -45,7 +45,9 @@ const updateCard = async (req, res) => {
 
     // Get updated user
     const updatedCard = await Card.findOne({
-        where: { UserID: user.id }
+        where: { 
+            UserID: userID 
+        }
     });
     return res.json({ updatedCard });
 }

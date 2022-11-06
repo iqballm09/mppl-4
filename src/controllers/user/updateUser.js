@@ -1,15 +1,17 @@
 const User = require("../../models/User");
-const Card = require("../../models/Card");
 const bcrypt = require("bcryptjs");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const updateUser = async (req, res) => {
     let hashNewPassword, updatedPassword;
     // Get payload
-    const email = req.user.email;
+    const userID = req.user.id;
     const user = await User.findOne({
-        where: { email: email }
+        where: { id: userID }
     });
-    if (!user) return res.status(404).send("User not found");
+    if (!user) return res.status(404).send(`User with id: ${userID} is not found`);
     // Change password. StatusCP = Status of Change Password
     if (req.body.statusCP === true) {
         if (req.body.oldPassword) {
@@ -43,7 +45,7 @@ const updateUser = async (req, res) => {
 
     // Get updated user
     const updatedUser = await User.findOne({
-        where: { email: email }
+        where: { id: userID }
     });
     return res.json({ updatedUser });
 }
