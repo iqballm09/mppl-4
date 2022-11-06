@@ -7,13 +7,6 @@ const Merchant = sequelize.define("Merchant", {
         primaryKey: true,
         autoIncrement: true
     },
-    FoodCourtID: {
-        type: Sequelize.INTEGER,
-        references: {
-            model: 'foodcourts',
-            key: 'id'
-        }
-    },
     username: {
         type: Sequelize.STRING(100),
         unique: true,
@@ -46,6 +39,9 @@ const Merchant = sequelize.define("Merchant", {
     phoneNumber: {
         type: Sequelize.STRING(50)
     },
+    location: {
+        type: Sequelize.STRING(1000)
+    },
     income: {
         type: Sequelize.DECIMAL(20),
         defaultValue: 0
@@ -54,7 +50,6 @@ const Merchant = sequelize.define("Merchant", {
 
 // Define association
 Merchant.associate = function (models) {
-    Merchant.belongsTo(models.FoodCourt, { foreignKey: "FoodCourtID" });
     Merchant.hasMany(models.Menu, { foreignKey: "MerchantID" });
     Merchant.hasMany(models.Order, { foreignKey: "MerchantID" });
 }

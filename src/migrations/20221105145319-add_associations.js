@@ -17,22 +17,6 @@ module.exports = {
       }
     )
       .then(() => {
-        // Foodcourt hasMany Merchants
-        return queryInterface.addColumn(
-          'merchants', // name of Target model
-          'FoodCourtID', // name of the key we're adding
-          {
-            type: Sequelize.INTEGER,
-            references: {
-              model: 'foodcourts', // name of Source model
-              key: 'id',
-            },
-            onUpdate: 'CASCADE',
-            onDelete: 'SET NULL',
-          }
-        );
-      })
-      .then(() => {
         // Card hasMany Top Up
         return queryInterface.addColumn(
           'topups', // name of Target model
@@ -135,12 +119,6 @@ module.exports = {
       'cards', // name of Source model
       'UserID' // key we want to remove
     )
-      .then(() => {
-        return queryInterface.removeColumn(
-          'merchants', // name of the Target model
-          'FoodCourtID' // key we want to remove
-        );
-      })
       .then(() => {
         return queryInterface.removeColumn(
           'topups', // name of the Target model

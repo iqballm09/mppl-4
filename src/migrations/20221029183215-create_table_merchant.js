@@ -41,6 +41,9 @@ module.exports = {
       phoneNumber: {
         type: Sequelize.STRING(50)
       },
+      location: {
+        type: Sequelize.STRING(1000)
+      },
       income: {
         type: Sequelize.DECIMAL(20),
         defaultValue: 0
