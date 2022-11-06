@@ -9,6 +9,8 @@ const updateCard = require("../controllers/card/updateCard");
 const updateUser = require("../controllers/user/updateUser");
 const createPayment = require("../controllers/payment/createPayment");
 const { getPaymentById, getAllPayments } = require("../controllers/payment/readPayment");
+const createTopUp = require("../controllers/topup/createTopup");
+const { getAllTopUps, getTopUpById } = require("../controllers/topup/readTopup");
 
 // User endpoints
 /* Register - Login */
@@ -19,9 +21,14 @@ router.get('/users', getAllUsers);
 router.put('/users/id/edit', verify, updateUser);
 
 // Payment endpoints
-router.post('/payments/id/cardID', verify, createPayment); 
+router.post('/payments/cardID', verify, createPayment);
 router.get('/payments/cardID', verify, getAllPayments); // By card id
 router.get('/payments/id/cardID', verify, getPaymentById);
+
+// Topup endpoints
+router.post('/topups/cardID', verify, createTopUp);
+router.get('/topups/cardID', verify, getAllTopUps); // By card id
+router.get('/topups/id/cardID', verify, getTopUpById);
 
 // Card endpoints
 router.get('/cards', getAllCards);

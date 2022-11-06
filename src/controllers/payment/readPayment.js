@@ -5,11 +5,16 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const getAllPayments = async(req, res) => {
+    // Get payload
+    const userID = req.user.id;
+    // Read card
+    const card = await Card.findOne({ 
+        where: { UserID: userID }
+    });
+    // Get all payments
     try {
         const payments = await Payment.findAll({
-            where: {
-                CardID: req.body.CardID
-            }
+            where: { CardID: card.id }
         });
         return res.status(200).json({ payments });
     } catch (error) {
