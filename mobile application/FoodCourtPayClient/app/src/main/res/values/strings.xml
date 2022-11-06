@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">FoodCourt Pay Client</string>
+    <string name="notification">Notification</string>
+    <string name="welcome">Welcome</string>
+    <string name="welcome2">Eat and Drink\nHowever You Like</string>
+    <string name="welcome3">With FoodCourt App, top up your\nFoodCourt Card, anywhere and\nanytime. Make it yours</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="login">Log In</string>
+    <string name="email">E-Mail</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">I forgot my password</string>
+    <string name="no_account">I don\'t have an account yet</string>
+    <string name="name">Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="confirm_password">Re-Enter Password</string>
+    <string name="continue_text">Continue</string>
+    <string name="balance">Balance</string>
+    <string name="kartu_makan_jkt">Kartu Makan JKT</string>
+    <string name="rp">Rp. </string>
+    <string name="saldo_value">2.500.000</string>
+    <string name="hello">Hello,</string>
+    <string name="exclamation">!</string>
+    <string name="pay">Pay</string>
+    <string name="history">History</string>
+    <string name="more">More</string>
+</resources>
