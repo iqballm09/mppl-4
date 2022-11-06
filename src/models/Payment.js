@@ -32,7 +32,6 @@ const Payment = sequelize.define("Payment", {
 // Define association
 Payment.associate = function (models) {
     Payment.belongsTo(models.Card, { foreignKey: 'CardID' });
-    Payment.belongsTo(models.Transaction, { foreignKey: 'TransactionID' });
 }
 
 module.exports = Payment;

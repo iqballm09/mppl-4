@@ -56,7 +56,7 @@ const Merchant = sequelize.define("Merchant", {
 Merchant.associate = function (models) {
     Merchant.belongsTo(models.FoodCourt, { foreignKey: "FoodCourtID" });
     Merchant.hasMany(models.Menu, { foreignKey: "MerchantID" });
-    Merchant.hasMany(models.Transaction, { foreignKey: "MerchantID" });
+    Merchant.hasMany(models.Order, { foreignKey: "MerchantID" });
 }
 
 module.exports = Merchant;

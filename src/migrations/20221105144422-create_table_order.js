@@ -34,8 +34,11 @@ module.exports = {
           notNull: { msg: "Menu must not null" }
         }
       },
+      date: {
+        type: Sequelize.DATEONLY
+      },
       createdAt: Sequelize.DATE,
-      updatedAt: Sequelize.DATE 
+      updatedAt: Sequelize.DATE
     });
   },
 

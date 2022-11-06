@@ -83,7 +83,7 @@ module.exports = {
       .then(() => {
         // Card hasMany Payment
         return queryInterface.addColumn(
-          'transactions', // name of Source model
+          'orders', // name of Source model
           'UserID', // name of the key we're adding
           {
             type: Sequelize.INTEGER,
@@ -99,28 +99,12 @@ module.exports = {
       .then(() => {
         // Card hasMany Payment
         return queryInterface.addColumn(
-          'transactions', // name of Target model
+          'orders', // name of Target model
           'MerchantID', // name of the key we're adding
           {
             type: Sequelize.INTEGER,
             references: {
               model: 'merchants', // name of Source model
-              key: 'id',
-            },
-            onUpdate: 'CASCADE',
-            onDelete: 'SET NULL',
-          }
-        );
-      })
-      .then(() => {
-        // Card hasMany Payment
-        return queryInterface.addColumn(
-          'transactions', // name of Target model
-          'OrderID', // name of the key we're adding
-          {
-            type: Sequelize.INTEGER,
-            references: {
-              model: 'orders', // name of Source model
               key: 'id',
             },
             onUpdate: 'CASCADE',
@@ -177,20 +161,14 @@ module.exports = {
       })
       .then(() => {
         return queryInterface.removeColumn(
-          'transactions', // name of Source model
+          'orders', // name of Source model
           'UserID' // key we want to remove
         )
       })
       .then(() => {
         return queryInterface.removeColumn(
-          'transactions', // name of Source model
+          'orders', // name of Source model
           'MerchantID' // key we want to remove
-        )
-      })
-      .then(() => {
-        return queryInterface.removeColumn(
-          'transactions', // name of Source model
-          'OrderID' // key we want to remove
         )
       })
       .then(() => {

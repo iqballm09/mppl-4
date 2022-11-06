@@ -14,6 +14,20 @@ const Order = sequelize.define('Order', {
             key: 'id'
         }
     },
+    UserID: {
+        type: Sequelize.INTEGER,
+        references: {
+            model: 'users',
+            key: 'id'
+        }
+    },
+    MerchantID: {
+        type: Sequelize.INTEGER,
+        references: {
+            model: 'merchants',
+            key: 'id'
+        }
+    },
     nameMenu: {
         type: Sequelize.STRING(100),
         allowNull: false,
@@ -38,13 +52,17 @@ const Order = sequelize.define('Order', {
             notEmpty: { msg: "Menu must have value" },
             notNull: { msg: "Menu must not null" }
         }
+    },
+    date: {
+        type: Sequelize.DATEONLY
     }
 });
 
 // Define association
 Order.associate = function (models) {
-    Order.hasMany(models.Transaction, { foreignKey: 'OrderID' });
-    Order.belongsTo(models.Menu, { foreignKey: 'MenuID' })
+    Order.belongsTo(models.User, { foreignKey: 'UserID' });
+    Order.belongsTo(models.Merchant, { foreignKey: 'MerchantID' });
+    Order.belongsTo(models.Menu, { foreignKey: 'MenuID' });
 }
 
 module.exports = Order;
