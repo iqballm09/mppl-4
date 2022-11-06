@@ -14,6 +14,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.btnPay.setOnClickListener {
+            val intent = Intent(this, PaymentActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnTopup.setOnClickListener {
+            val intent = Intent(this, TopupActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.tvMore.setOnClickListener {
+            val intent = Intent(this, HistoryTransactionActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

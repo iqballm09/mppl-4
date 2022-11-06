@@ -10,5 +10,7 @@ class PayCameraActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPayCameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.setTitle(R.string.scan)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 }
