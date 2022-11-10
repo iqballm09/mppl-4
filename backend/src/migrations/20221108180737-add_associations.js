@@ -112,6 +112,22 @@ module.exports = {
           }
         );
       })
+      .then(() => {
+        // Card hasMany Top Up
+        return queryInterface.addColumn(
+          'withdraws', // name of Target model
+          'MerchantID', // name of the key we're adding
+          {
+            type: Sequelize.INTEGER,
+            references: {
+              model: 'merchants', // name of Source model
+              key: 'id',
+            },
+            onUpdate: 'CASCADE',
+            onDelete: 'SET NULL',
+          }
+        );
+      })
   },
 
   down: (queryInterface, Sequelize) => {
@@ -154,6 +170,12 @@ module.exports = {
           'orders', // name of Source model
           'MenuID' // key we want to remove
         )
+      })
+      .then(() => {
+        return queryInterface.removeColumn(
+          'withdraws', // name of the Target model
+          'MerchantID' // key we want to remove
+        );
       })
   }
 };

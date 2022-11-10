@@ -9,18 +9,8 @@ module.exports = {
         primaryKey: true,
         autoIncrement: true
       },
-      username: {
-        type: Sequelize.STRING(100),
-        unique: true,
-        allowNull: false,
-        validate: {
-          notEmpty: { msg: "Username must have value" },
-          notNull: { msg: "Username must not null" }
-        }
-      },
       name: {
         type: Sequelize.STRING(500),
-        allowNull: false,
         validate: {
           notEmpty: { msg: "name must not be empty" }
         }
@@ -40,6 +30,17 @@ module.exports = {
       },
       phoneNumber: {
         type: Sequelize.STRING(50)
+      },
+      photo: {
+        type: Sequelize.STRING(1024),
+        defaultValue: "default-photo.png"
+      },
+      pinNumber: {
+        type: Sequelize.STRING(1024),
+        defaultValue: "000000",
+        validate: {
+          notEmpty: { msg: 'pin number must not be empty' },
+        }
       },
       location: {
         type: Sequelize.STRING(1000)

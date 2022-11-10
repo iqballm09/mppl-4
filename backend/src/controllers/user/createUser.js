@@ -25,8 +25,8 @@ const createUser = async (req, res) => {
         });
         await user.save();
         // Insert pin number
-        const saltCard = await bcrypt.genSalt(16);
-        const hashPin = await bcrypt.hash(req.body.pinNumber, saltCard);
+        const saltPin = await bcrypt.genSalt(16);
+        const hashPin = await bcrypt.hash(req.body.pinNumber, saltPin);
         // Create card
         const card = await Card.create({
             UserID: user.id,

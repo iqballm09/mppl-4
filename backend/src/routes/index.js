@@ -1,9 +1,12 @@
 const router = require('express').Router();
-const verify = require("../utils/verifyToken");
+const verifyUser = require("../middleware/verifyTokenUser");
+const verifyMerchant = require("../middleware/verifyTokenMerchant");
 
 // Import controllers
 const createUser = require("../controllers/user/createUser");
-const { getUserByEmail, getAllUsers } = require('../controllers/user/readUser');
+const { getUserByEmail, getAllUsers, getUserById } = require('../controllers/user/readUser');
+const createMerchant = require("../controllers/merchant/createMerchant");
+const { getMerchantByEmail, getAllMerchants, getMerchantById } = require("../controllers/merchant/readMerchant")
 const { getCard, getAllCards } = require('../controllers/card/readCard');
 const updateCard = require("../controllers/card/updateCard");
 const updateUser = require("../controllers/user/updateUser");
@@ -11,28 +14,39 @@ const createPayment = require("../controllers/payment/createPayment");
 const { getPaymentById, getAllPayments } = require("../controllers/payment/readPayment");
 const createTopUp = require("../controllers/topup/createTopup");
 const { getAllTopUps, getTopUpById } = require("../controllers/topup/readTopup");
+const updateMerchant = require('../controllers/merchant/updateMerchant');
 
 // User endpoints
 /* Register - Login */
 router.post('/users/register', createUser);
-router.get('/users/login', getUserByEmail);
+router.post('/users/login', getUserByEmail);
 /* Get and update */
 router.get('/users', getAllUsers);
-router.put('/users/id/edit', verify, updateUser);
+router.get("/users/id", verifyUser, getUserById);
+router.put('/users/id/edit', verifyUser, updateUser);
+
+// Merchant endpoints
+/* Register - Login */
+router.post('/merchants/register', createMerchant);
+router.post('/merchants/login', getMerchantByEmail);
+/* Get and update */
+router.get('/merchants', getAllMerchants);
+router.get("/merchants/id", verifyMerchant, getMerchantById);
+router.put('/merchants/id/edit', verifyMerchant, updateMerchant);
 
 // Payment endpoints
-router.post('/payments/cardID', verify, createPayment);
-router.get('/payments/cardID', verify, getAllPayments); // By card id
-router.get('/payments/id/cardID', verify, getPaymentById);
+router.post('/payments/cardID', verifyUser, createPayment);
+router.get('/payments/cardID', verifyUser, getAllPayments); // By card id
+router.get('/payments/id/cardID', verifyUser, getPaymentById);
 
 // Topup endpoints
-router.post('/topups/cardID', verify, createTopUp);
-router.get('/topups/cardID', verify, getAllTopUps); // By card id
-router.get('/topups/id/cardID', verify, getTopUpById);
+router.post('/topups/cardID', verifyUser, createTopUp);
+router.get('/topups/cardID', verifyUser, getAllTopUps); // By card id
+router.get('/topups/id/cardID', verifyUser, getTopUpById);
 
 // Card endpoints
 router.get('/cards', getAllCards);
-router.get('/cards/id/userID', verify, getCard);
-router.put('/cards/id/userID/edit', verify, updateCard);
+router.get('/cards/id/userID', verifyUser, getCard);
+router.put('/cards/id/userID/edit', verifyUser, updateCard);
 
 module.exports = router;

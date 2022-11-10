@@ -7,18 +7,8 @@ const Merchant = sequelize.define("Merchant", {
         primaryKey: true,
         autoIncrement: true
     },
-    username: {
-        type: Sequelize.STRING(100),
-        unique: true,
-        allowNull: false,
-        validate: {
-            notEmpty: { msg: "Username must have value" },
-            notNull: { msg: "Username must not null" }
-        }
-    },
     name: {
         type: Sequelize.STRING(500),
-        allowNull: false,
         validate: {
             notEmpty: { msg: "name must not be empty" }
         }
@@ -42,6 +32,17 @@ const Merchant = sequelize.define("Merchant", {
     location: {
         type: Sequelize.STRING(1000)
     },
+    photo: {
+        type: Sequelize.STRING(1024),
+        defaultValue: "default-photo.png"
+    },
+    pinNumber: {
+        type: Sequelize.STRING(1024),
+        defaultValue: "000000",
+        validate: {
+            notEmpty: { msg: 'pin number must not be empty' },
+        }
+    },
     income: {
         type: Sequelize.DECIMAL(20),
         defaultValue: 0
@@ -52,6 +53,7 @@ const Merchant = sequelize.define("Merchant", {
 Merchant.associate = function (models) {
     Merchant.hasMany(models.Menu, { foreignKey: "MerchantID" });
     Merchant.hasMany(models.Order, { foreignKey: "MerchantID" });
+    Merchant.hasMany(models.Withdraw, { foreignKey: "MerchantID" })
 }
 
 module.exports = Merchant;
