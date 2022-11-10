@@ -5,11 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
-<<<<<<< HEAD
     tools:context=".layout.TopupActivity">
-=======
-    tools:context=".TopupActivity">
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
 
     <TextView
         android:layout_width="wrap_content"
@@ -77,10 +73,6 @@
                 android:text="@string/see_history"
                 android:textColor="@color/white"
                 android:textSize="16sp"
-<<<<<<< HEAD
-
-=======
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
                 app:layout_constraintTop_toBottomOf="@id/tv_rp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -228,9 +220,4 @@
             </LinearLayout>
         </TableRow>
     </TableLayout>
-<<<<<<< HEAD
-=======
-
-
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
 </androidx.constraintlayout.widget.ConstraintLayout>

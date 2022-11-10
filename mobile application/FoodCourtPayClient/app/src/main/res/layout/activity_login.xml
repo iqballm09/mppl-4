@@ -5,11 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="22dp"
-<<<<<<< HEAD
     tools:context=".layout.LoginActivity">
-=======
-    tools:context=".LoginActivity">
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
 
     <EditText
         android:layout_marginTop="145dp"
@@ -70,13 +66,10 @@
         android:layout_marginTop="14dp"
         app:layout_constraintTop_toBottomOf="@id/tv_forgot_password"/>
 
-<<<<<<< HEAD
     <ProgressBar
         android:id="@+id/progress_bar"
         android:visibility="gone"
         style="@style/progress_bar_style"
         tools:ignore="MissingConstraints" />
-=======
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
 
 </androidx.constraintlayout.widget.ConstraintLayout>

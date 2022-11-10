@@ -5,11 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
-<<<<<<< HEAD
     tools:context=".layout.PaymentPinActivity">
-=======
-    tools:context=".PaymentPinActivity">
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
 
     <TextView
         android:layout_width="wrap_content"
@@ -35,21 +31,14 @@
 
     <EditText
         android:layout_width="match_parent"
-<<<<<<< HEAD
         android:layout_height="50dp"
-=======
-        android:layout_height="wrap_content"
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
         app:layout_constraintTop_toBottomOf="@id/tv_enter_pin"
         android:hint="@string/pin"
         android:id="@+id/edt_pin"
         android:inputType="numberPassword"
         android:gravity="center"
-<<<<<<< HEAD
         android:textSize="24sp"
         android:maxLength="6"
-=======
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
         android:layout_marginTop="24dp" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -63,11 +52,6 @@
         android:textColor="@color/white"
         android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@id/edt_pin"
-<<<<<<< HEAD
         android:layout_marginTop="35dp" />
-=======
-        android:layout_marginTop="34dp" />
-
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
 
 </androidx.constraintlayout.widget.ConstraintLayout>

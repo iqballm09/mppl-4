@@ -5,11 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="22dp"
-<<<<<<< HEAD
     tools:context=".layout.SignupActivity">
-=======
-    tools:context=".SignupActivity">
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
 
     <EditText
         android:layout_marginTop="145dp"

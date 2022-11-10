@@ -5,11 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
-<<<<<<< HEAD
     tools:context=".layout.ConfirmationActivity">
-=======
-    tools:context=".ConfirmationActivity">
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
 
     <ImageView
         android:id="@+id/img_success"
