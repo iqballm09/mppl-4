@@ -5,7 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
+<<<<<<< HEAD
     tools:context=".layout.PaymentActivity">
+=======
+    tools:context=".PaymentActivity">
+>>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
 
     <TextView
         android:layout_width="wrap_content"
@@ -208,4 +212,8 @@
         android:background="@drawable/btn_radius"
         android:backgroundTint="@color/secondary_red"/>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
 </androidx.constraintlayout.widget.ConstraintLayout>

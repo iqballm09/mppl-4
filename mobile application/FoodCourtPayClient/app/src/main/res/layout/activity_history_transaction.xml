@@ -4,6 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     tools:context=".layout.HistoryTransactionActivity">
+=======
+    tools:context=".HistoryTransactionActivity">
+>>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.foodcourtappmerchant
 
+<<<<<<< HEAD
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -36,5 +37,14 @@ class MainActivity : AppCompatActivity() {
             }
             else -> true
         }
+=======
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+>>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
     }
 }

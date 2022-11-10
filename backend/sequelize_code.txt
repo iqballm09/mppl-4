@@ -1,0 +1,6 @@
+// migrasi data
+npx sequelize db:migrate 
+// buat tabel migrasi
+npx sequelize migration:create --name namaAksi_table_namaTabel
+// undo migration
+npx sequelize db:migrate:undo

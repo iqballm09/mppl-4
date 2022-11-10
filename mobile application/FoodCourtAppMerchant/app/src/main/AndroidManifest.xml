@@ -2,8 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+<<<<<<< HEAD
     <uses-permission android:name="android.permission.INTERNET" />
 
+=======
+>>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,6 +18,7 @@
         android:theme="@style/Theme.FoodCourtAppMerchant"
         tools:targetApi="31">
         <activity
+<<<<<<< HEAD
             android:name=".DetailTransactionActivity"
             android:exported="false">
             <meta-data
@@ -74,6 +78,8 @@
                 android:value="" />
         </activity>
         <activity
+=======
+>>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

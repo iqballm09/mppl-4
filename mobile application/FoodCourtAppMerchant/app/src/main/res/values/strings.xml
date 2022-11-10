@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">FoodCourtAppMerchant</string>
+<<<<<<< HEAD
     <string name="notification">Notification</string>
     <string name="welcome">Welcome</string>
     <string name="welcome2">Eat and Drink\nHowever You Like</string>
@@ -65,4 +66,6 @@
     <string name="thank_you_and_keep_going">Thank you and keep going</string>
     <string name="download_receipt">Download Receipt</string>
     <string name="transaction">Transaction</string>
+=======
+>>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
 </resources>
