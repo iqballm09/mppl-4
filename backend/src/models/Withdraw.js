@@ -25,6 +25,9 @@ const Withdraw = sequelize.define("Withdraw", {
     method: {
         type: Sequelize.STRING(50)
     },
+    accountNumber: {
+        type: Sequelize.STRING(50)
+    },
     date: {
         type: Sequelize.DATEONLY
     }

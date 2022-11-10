@@ -13,7 +13,7 @@ const createPayment = async(req, res) => {
     const card = await Card.findOne({ 
         where: { UserID: userID }
     });
-    if (!card) return res.status(404).send(`Card with UserID: ${userID} is not found`);    
+    if (!card) return res.status(404).send(`Card with UserID: ${ userID } is not found`);    
 
     // Proceed to payment
     if (req.body.pinNumber) {

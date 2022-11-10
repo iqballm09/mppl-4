@@ -15,6 +15,8 @@ const { getPaymentById, getAllPayments } = require("../controllers/payment/readP
 const createTopUp = require("../controllers/topup/createTopup");
 const { getAllTopUps, getTopUpById } = require("../controllers/topup/readTopup");
 const updateMerchant = require('../controllers/merchant/updateMerchant');
+const createWithdraw = require("../controllers/withdraw/createWithdraw");
+const { getAllWithdraws, getWithdrawById } = require("../controllers/withdraw/readWithdraw");
 
 // User endpoints
 /* Register - Login */
@@ -48,5 +50,10 @@ router.get('/topups/id/cardID', verifyUser, getTopUpById);
 router.get('/cards', getAllCards);
 router.get('/cards/id/userID', verifyUser, getCard);
 router.put('/cards/id/userID/edit', verifyUser, updateCard);
+
+// Withdraw endpoints
+router.post('/withdraws/merchantID', verifyMerchant, createWithdraw);
+router.get('/withdraws/merchantID', verifyMerchant, getAllWithdraws); // By merchant id
+router.get('/withdraws/id/merchantID', verifyMerchant, getWithdrawById);
 
 module.exports = router;

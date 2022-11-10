@@ -23,6 +23,9 @@ module.exports = {
       date: {
         type: Sequelize.DATEONLY
       },
+      accountNumber: {
+        type: Sequelize.STRING(50)
+      },
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE
     });
