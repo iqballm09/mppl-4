@@ -1,8 +1,9 @@
-package com.example.foodcourtpayclient
+package com.example.foodcourtpayclient.layout
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.foodcourtpayclient.R
 import com.example.foodcourtpayclient.databinding.ActivityTopupBinding
 
 class TopupActivity : AppCompatActivity() {
@@ -17,6 +18,11 @@ class TopupActivity : AppCompatActivity() {
 
         binding.tvHistory.setOnClickListener {
             val intent = Intent(this, HistoryTransactionActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnBank.setOnClickListener {
+            val intent = Intent(this, BankPaymentActivity::class.java)
             startActivity(intent)
         }
     }

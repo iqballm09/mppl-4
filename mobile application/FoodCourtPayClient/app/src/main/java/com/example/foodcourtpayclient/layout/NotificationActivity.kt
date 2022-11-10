@@ -1,7 +1,8 @@
-package com.example.foodcourtpayclient
+package com.example.foodcourtpayclient.layout
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.foodcourtpayclient.R
 import com.example.foodcourtpayclient.databinding.ActivityNotificationBinding
 
 class NotificationActivity : AppCompatActivity() {
@@ -10,5 +11,7 @@ class NotificationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityNotificationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.setTitle(R.string.notification)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 }

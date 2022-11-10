@@ -4,6 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NotificationActivity">
+    tools:context=".layout.NotificationActivity">
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:visibility="gone"
+        style="@style/progress_bar_style"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
-    tools:context=".PaymentActivity">
+    tools:context=".layout.PaymentActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -207,6 +207,5 @@
         android:textColor="@color/white"
         android:background="@drawable/btn_radius"
         android:backgroundTint="@color/secondary_red"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
-    tools:context=".TopupActivity">
+    tools:context=".layout.TopupActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -73,6 +73,7 @@
                 android:text="@string/see_history"
                 android:textColor="@color/white"
                 android:textSize="16sp"
+
                 app:layout_constraintTop_toBottomOf="@id/tv_rp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -220,6 +221,4 @@
             </LinearLayout>
         </TableRow>
     </TableLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

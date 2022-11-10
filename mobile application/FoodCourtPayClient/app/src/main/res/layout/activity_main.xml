@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
-    tools:context=".MainActivity">
+    tools:context=".layout.MainActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageProfile"
@@ -186,4 +186,17 @@
         android:layout_marginTop="22dp"
         android:layout_marginEnd="8dp" />
 
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:visibility="gone"
+        style="@style/progress_bar_style"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rv_transaction"
+        app:layout_constraintTop_toBottomOf="@id/tv_history"
+        android:layout_marginTop="10dp" >
+    </androidx.recyclerview.widget.RecyclerView>
 </androidx.constraintlayout.widget.ConstraintLayout>

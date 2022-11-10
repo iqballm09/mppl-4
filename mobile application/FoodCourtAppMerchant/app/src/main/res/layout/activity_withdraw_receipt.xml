@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    tools:context=".WithdrawReceiptActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_card"
+        android:text="@string/confirmation"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/black" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_card"
+        app:cardCornerRadius="25dp"
+        android:layout_marginTop="18dp"
+        android:id="@+id/cardMenu"
+        android:backgroundTint="@color/primary_red">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/card_name"
+                android:text="@string/business"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="33dp"
+                android:layout_marginStart="35dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_bank_name"
+                android:text="@string/bank_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/card_name"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_marginStart="35dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_bank_account"
+                android:text="@string/bank_account"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/tv_bank_name"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginBottom="34dp"
+                android:layout_marginStart="35dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_date"
+                android:text="@string/dd_mm_yyyy"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/tv_bank_account"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="34dp"
+                android:layout_marginStart="35dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/img_wallet"
+                android:src="@drawable/ic_baseline_credit_card_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="40dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:contentDescription="@string/wallet" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/separator"
+        android:background="@color/darker_grey"
+        app:layout_constraintTop_toBottomOf="@id/cardMenu"
+        android:layout_marginTop="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_receipt"
+        android:text="@string/receipt"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/separator"
+        android:layout_marginTop="14dp"/>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/table_receipt"
+        android:layout_marginTop="18dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_receipt" >
+        <TableRow>
+            <TextView
+                android:text="@string/pesanan"
+                style="@style/tv_table_receipt"
+                android:gravity="start"
+                android:layout_weight="3"
+                android:textStyle="bold" />
+            <TextView
+                android:text="@string/harga_total"
+                style="@style/tv_table_receipt"
+                android:layout_weight="2"
+                android:gravity="end"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/darker_grey"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="5dp" />
+
+        <TableRow>
+            <TextView
+                android:text="@string/withdraw"
+                style="@style/tv_table_receipt"
+                android:gravity="start"
+                android:layout_weight="3"
+                android:textStyle="bold" />
+            <TextView
+                android:text="@string/saldo_value"
+                style="@style/tv_table_receipt"
+                android:layout_weight="2"
+                android:gravity="end"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:text="@string/admin_fee"
+                style="@style/tv_table_receipt"
+                android:gravity="start"
+                android:layout_weight="3"
+                android:textStyle="bold" />
+            <TextView
+                android:text="@string/saldo_value"
+                style="@style/tv_table_receipt"
+                android:layout_weight="2"
+                android:gravity="end"/>
+        </TableRow>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/darker_grey"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="5dp" />
+
+        <TableRow>
+            <TextView
+                android:text="@string/total"
+                style="@style/tv_table_receipt"
+                android:gravity="start"
+                android:layout_weight="3"
+                android:textStyle="bold" />
+            <TextView
+                android:text="@string/saldo_value"
+                style="@style/tv_table_receipt"
+                android:layout_weight="2"
+                android:gravity="end"
+                android:id="@+id/tv_total_price"
+                android:textStyle="bold" />
+        </TableRow>
+    </TableLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_proceed"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@id/table_receipt"
+        android:text="@string/continue_text"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_radius"
+        android:backgroundTint="@color/secondary_red"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
