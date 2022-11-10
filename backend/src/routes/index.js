@@ -5,18 +5,22 @@ const verifyMerchant = require("../middleware/verifyTokenMerchant");
 // Import controllers
 const createUser = require("../controllers/user/createUser");
 const { getUserByEmail, getAllUsers, getUserById } = require('../controllers/user/readUser');
+const updateUser = require("../controllers/user/updateUser");
 const createMerchant = require("../controllers/merchant/createMerchant");
 const { getMerchantByEmail, getAllMerchants, getMerchantById } = require("../controllers/merchant/readMerchant")
+const updateMerchant = require('../controllers/merchant/updateMerchant');
 const { getCard, getAllCards } = require('../controllers/card/readCard');
 const updateCard = require("../controllers/card/updateCard");
-const updateUser = require("../controllers/user/updateUser");
 const createPayment = require("../controllers/payment/createPayment");
 const { getPaymentById, getAllPayments } = require("../controllers/payment/readPayment");
 const createTopUp = require("../controllers/topup/createTopup");
 const { getAllTopUps, getTopUpById } = require("../controllers/topup/readTopup");
-const updateMerchant = require('../controllers/merchant/updateMerchant');
 const createWithdraw = require("../controllers/withdraw/createWithdraw");
 const { getAllWithdraws, getWithdrawById } = require("../controllers/withdraw/readWithdraw");
+const createMenu = require("../controllers/menu/createMenu");
+const { getAllMenus, getMenuById } = require("../controllers/menu/readMenu");
+const updateMenu = require("../controllers/menu/updateMenu");
+const deleteMenu = require("../controllers/menu/deleteMenu");
 
 // User endpoints
 /* Register - Login */
@@ -55,5 +59,12 @@ router.put('/cards/id/userID/edit', verifyUser, updateCard);
 router.post('/withdraws/merchantID', verifyMerchant, createWithdraw);
 router.get('/withdraws/merchantID', verifyMerchant, getAllWithdraws); // By merchant id
 router.get('/withdraws/id/merchantID', verifyMerchant, getWithdrawById);
+
+// Menu endpoints
+router.post('/menus/merchantID', verifyMerchant, createMenu);
+router.get('/menus/merchantID', verifyMerchant, getAllMenus); // By merchant id
+router.get('/menus/id/merchantID', verifyMerchant, getMenuById);
+router.put('/menus/id/merchantID', verifyMerchant, updateMenu);
+router.delete('/menus/id/merchantID', verifyMerchant, deleteMenu);
 
 module.exports = router;

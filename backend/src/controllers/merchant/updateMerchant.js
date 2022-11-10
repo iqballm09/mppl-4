@@ -62,11 +62,11 @@ const updateMerchant = async (req, res) => {
 
     await merchant.save();
 
-    // Get updated user
+    // Get updated merchant
     const updatedMerchant = await Merchant.findOne({
         where: { id: merchantID }
     });
-    return res.json({ updatedMerchant });
+    return res.status(201).json({ updatedMerchant });
 }
 
 module.exports = updateMerchant;

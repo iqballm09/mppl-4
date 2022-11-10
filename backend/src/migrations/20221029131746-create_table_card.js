@@ -12,7 +12,6 @@ module.exports = {
       name: {
         type: Sequelize.STRING(100),
         defaultValue: "Nama kartu",
-        allowNull: false,
         validate: {
           notEmpty: { msg: "Card must have name" },
           notNull: { msg: "Card name must not null" }
@@ -21,7 +20,6 @@ module.exports = {
       saldo: {
         type: Sequelize.INTEGER(15),
         defaultValue: 0,
-        allowNull: false,
         validate: {
           notEmpty: { msg: "Saldo must have not empty" }
         }

@@ -8,7 +8,7 @@ const Card = sequelize.define('Card', {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
-    },
+      },
     UserID: {
         type: Sequelize.INTEGER,
         references: {
@@ -19,16 +19,13 @@ const Card = sequelize.define('Card', {
     name: {
         type: Sequelize.STRING(100),
         defaultValue: "Nama kartu",
-        allowNull: false,
         validate: {
-            notEmpty: { msg: "Card must have name" },
-            notNull: { msg: "Card name must not null" }
+            notEmpty: { msg: "Card must have name" }
         }
     },
     saldo: {
         type: Sequelize.INTEGER(15),
         defaultValue: 0,
-        allowNull: false,
         validate: {
             notEmpty: { msg: "Saldo must have not empty" }
         }

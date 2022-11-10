@@ -26,7 +26,7 @@ const createTopUp = async (req, res) => {
     });
     await topup.save();
     await card.save();
-    return res.json({ topup, card });
+    return res.status(201).json({ topup, card });
 }
 
 module.exports = createTopUp;

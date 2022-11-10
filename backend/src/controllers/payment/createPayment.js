@@ -36,7 +36,7 @@ const createPayment = async(req, res) => {
         });
         await payment.save();
         await card.save();
-        return res.json({ payment, card });
+        return res.status(201).json({ payment, card });
     } else {
         return res.status(500).send("Pin number is empty");
     }

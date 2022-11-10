@@ -36,7 +36,7 @@ const createWithdraw = async(req, res) => {
         });
         await merchant.save();
         await withdraw.save();
-        return res.json({ merchant, withdraw });
+        return res.status(201).json({ merchant, withdraw });
     } else {
         return res.status(500).send("Pin number is empty");
     }

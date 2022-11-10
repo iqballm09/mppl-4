@@ -6,7 +6,7 @@ const TopUp = sequelize.define("TopUp", {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
-    },
+      },
     CardID: {
         type: Sequelize.INTEGER,
         references: {
@@ -17,7 +17,6 @@ const TopUp = sequelize.define("TopUp", {
     amount: {
         type: Sequelize.DECIMAL(20),
         defaultValue: 0,
-        allowNull: false,
         validate: {
             notEmpty: { msg: "Amount must have value" }
         }

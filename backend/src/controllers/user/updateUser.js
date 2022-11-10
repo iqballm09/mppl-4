@@ -47,7 +47,7 @@ const updateUser = async (req, res) => {
     const updatedUser = await User.findOne({
         where: { id: userID }
     });
-    return res.json({ updatedUser });
+    return res.status(201).json({ updatedUser });
 }
 
 module.exports = updateUser;

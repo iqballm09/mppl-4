@@ -6,7 +6,7 @@ const Payment = sequelize.define("Payment", {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
-    },
+      },
     CardID: {
         type: Sequelize.INTEGER,
         references: {

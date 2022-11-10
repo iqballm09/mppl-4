@@ -6,7 +6,7 @@ const Merchant = sequelize.define("Merchant", {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
-    },
+      },
     name: {
         type: Sequelize.STRING(500),
         validate: {

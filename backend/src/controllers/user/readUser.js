@@ -38,7 +38,7 @@ const getUserById = async (req, res) => {
     const user = await User.findOne({
         where: { id: userID }
     });
-    return res.json({ user });
+    return res.status(200).json({ user });
 }
 
 module.exports = {

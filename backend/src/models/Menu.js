@@ -6,7 +6,7 @@ const Menu = sequelize.define('Menu', {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
-    },
+      },
     MerchantID: {
         type: Sequelize.INTEGER,
         references: {
@@ -16,26 +16,26 @@ const Menu = sequelize.define('Menu', {
     },
     name: {
         type: Sequelize.STRING(100),
-        allowNull: false,
         validate: {
-            notEmpty: { msg: "Menu must have a value" }
+            notEmpty: { msg: "Menu name must have a value" }
         }
     },
     price: {
         type: Sequelize.DECIMAL(20),
-        allowNull: false,
         defaultValue: 0,
         validate: {
-            notEmpty: { msg: "Price must have a value" }
+            notEmpty: { msg: "Menu price must have a value" }
         }
+    },
+    photo: {
+        type: Sequelize.STRING(1024),
+        defaultValue: "default-photo.png"
     },
     // Tipe menu: makanan dan minuman
     type: {
         type: Sequelize.STRING(50),
-        allowNull: false,
         validate: {
-            notEmpty: { msg: "Menu must have value" },
-            notNull: { msg: "Menu must not null" }
+            notEmpty: { msg: "Menu type must have value" }
         }
     }
 });

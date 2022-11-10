@@ -17,7 +17,6 @@ const Withdraw = sequelize.define("Withdraw", {
     amount: {
         type: Sequelize.DECIMAL(20),
         defaultValue: 0,
-        allowNull: false,
         validate: {
             notEmpty: { msg: "Amount must have value" }
         }
