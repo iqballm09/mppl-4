@@ -53,7 +53,8 @@ const Merchant = sequelize.define("Merchant", {
 Merchant.associate = function (models) {
     Merchant.hasMany(models.Menu, { foreignKey: "MerchantID" });
     Merchant.hasMany(models.Order, { foreignKey: "MerchantID" });
-    Merchant.hasMany(models.Withdraw, { foreignKey: "MerchantID" })
+    Merchant.hasMany(models.Withdraw, { foreignKey: "MerchantID" });
+    Merchant.hasMany(models.TopUpCashier, { foreignKey: "MerchantID" });
 }
 
 module.exports = Merchant;

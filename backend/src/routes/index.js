@@ -13,8 +13,10 @@ const { getCard, getAllCards } = require('../controllers/card/readCard');
 const updateCard = require("../controllers/card/updateCard");
 const createPayment = require("../controllers/payment/createPayment");
 const { getPaymentById, getAllPayments } = require("../controllers/payment/readPayment");
-const createTopUp = require("../controllers/topup/createTopup");
-const { getAllTopUps, getTopUpById } = require("../controllers/topup/readTopup");
+const createUserTopUp = require("../controllers/topupUser/createTopupUser");
+const { getAllUserTopUps, getUserTopUpById } = require("../controllers/topupUser/readTopupUser");
+const createCashierTopUp = require("../controllers/topupCashier/createTopupCashier");
+const { getAllCashierTopUps, getCashierTopUpById } = require("../controllers/topupCashier/readTopupCashier");
 const createWithdraw = require("../controllers/withdraw/createWithdraw");
 const { getAllWithdraws, getWithdrawById } = require("../controllers/withdraw/readWithdraw");
 const createMenu = require("../controllers/menu/createMenu");
@@ -25,7 +27,7 @@ const deleteMenu = require("../controllers/menu/deleteMenu");
 // User endpoints
 /* Register - Login */
 router.post('/users/register', createUser);
-router.post('/users/login', getUserByEmail);
+router.post('/users/login', getUserByEmail); // token ada pada header 'auth-token'
 /* Get and update */
 router.get('/users', getAllUsers);
 router.get("/users/id", verifyUser, getUserById);
@@ -34,21 +36,26 @@ router.put('/users/id/edit', verifyUser, updateUser);
 // Merchant endpoints
 /* Register - Login */
 router.post('/merchants/register', createMerchant);
-router.post('/merchants/login', getMerchantByEmail);
+router.post('/merchants/login', getMerchantByEmail); // token ada pada header 'auth-token'
 /* Get and update */
 router.get('/merchants', getAllMerchants);
 router.get("/merchants/id", verifyMerchant, getMerchantById);
 router.put('/merchants/id/edit', verifyMerchant, updateMerchant);
 
 // Payment endpoints
-router.post('/payments/cardID', verifyUser, createPayment);
+router.post('/payments/cardID', verifyUser, createPayment); // QR code
 router.get('/payments/cardID', verifyUser, getAllPayments); // By card id
 router.get('/payments/id/cardID', verifyUser, getPaymentById);
 
-// Topup endpoints
-router.post('/topups/cardID', verifyUser, createTopUp);
-router.get('/topups/cardID', verifyUser, getAllTopUps); // By card id
-router.get('/topups/id/cardID', verifyUser, getTopUpById);
+// Topup - User endpoints
+router.post('/userTopups/cardID', verifyUser, createUserTopUp);
+router.get('/userTopups/cardID', verifyUser, getAllUserTopUps); // By card id
+router.get('/userTopups/id/cardID', verifyUser, getUserTopUpById);
+
+// Topup - Cashier (Merchant) endpoints
+router.post('/cashierTopups/cardID/merchantID', verifyMerchant, createCashierTopUp);
+router.get('/cashierTopups/merchantID', verifyMerchant, getAllCashierTopUps); // By merchant id
+router.get('/cashierTopups/id/merchantID', verifyMerchant, getCashierTopUpById);
 
 // Card endpoints
 router.get('/cards', getAllCards);

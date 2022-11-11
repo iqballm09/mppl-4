@@ -19,12 +19,44 @@ module.exports = {
       .then(() => {
         // Card hasMany Top Up
         return queryInterface.addColumn(
-          'topups', // name of Target model
+          'topup_users', // name of Target model
           'CardID', // name of the key we're adding
           {
             type: Sequelize.INTEGER,
             references: {
               model: 'cards', // name of Source model
+              key: 'id',
+            },
+            onUpdate: 'CASCADE',
+            onDelete: 'SET NULL',
+          }
+        );
+      })
+      .then(() => {
+        // Card hasMany Top Up
+        return queryInterface.addColumn(
+          'topup_cashiers', // name of Target model
+          'CardID', // name of the key we're adding
+          {
+            type: Sequelize.INTEGER,
+            references: {
+              model: 'cards', // name of Source model
+              key: 'id',
+            },
+            onUpdate: 'CASCADE',
+            onDelete: 'SET NULL',
+          }
+        );
+      })
+      .then(() => {
+        // Card hasMany Top Up
+        return queryInterface.addColumn(
+          'topup_cashiers', // name of Target model
+          'MerchantID', // name of the key we're adding
+          {
+            type: Sequelize.INTEGER,
+            references: {
+              model: 'merchants', // name of Source model
               key: 'id',
             },
             onUpdate: 'CASCADE',
@@ -137,8 +169,20 @@ module.exports = {
     )
       .then(() => {
         return queryInterface.removeColumn(
-          'topups', // name of the Target model
+          'topup_users', // name of the Target model
           'CardID' // key we want to remove
+        );
+      })
+      .then(() => {
+        return queryInterface.removeColumn(
+          'topup_cashiers', // name of the Target model
+          'CardID' // key we want to remove
+        );
+      })
+      .then(() => {
+        return queryInterface.removeColumn(
+          'topup_cashiers', // name of the Target model
+          'MerchantID' // key we want to remove
         );
       })
       .then(() => {

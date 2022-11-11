@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../database/connection");
 
-const TopUp = sequelize.define("TopUp", {
+const TopUpUser = sequelize.define("TopUp_User", {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -33,9 +33,8 @@ const TopUp = sequelize.define("TopUp", {
 });
 
 // Define associations
-TopUp.associate = function (models) {
-    TopUp.belongsTo(models.Card, { foreignKey: 'CardID' });
+TopUpUser.associate = function (models) {
+    TopUpUser.belongsTo(models.Card, { foreignKey: 'CardID' });
 }
 
-
-module.exports = TopUp;
+module.exports = TopUpUser;

@@ -1,19 +1,19 @@
-const TopUp = require("../../models/TopUp");
+const TopUpUser = require("../../models/TopUpUser");
 const Card = require("../../models/Card");
 const dotenv = require("dotenv");
 
 dotenv.config();
 
-const createTopUp = async (req, res) => {
+const createUserTopUp = async (req, res) => {
     // Get payload
     const userID = req.user.id;
     // Read card
     const card = await Card.findOne({ 
         where: { UserID: userID }
     });
-    if (!card) return res.status(404).send(`Card with UserID: ${userID} is not found`);
+    if (!card) return res.status(404).send(`Card with UserID: ${ userID } is not found`);
     // Create topup
-    const topup = await TopUp.create({
+    const userTopup = await TopUpUser.create({
         CardID: card.id,
         method: req.body.method,
         amount: req.body.amount,
@@ -24,9 +24,9 @@ const createTopUp = async (req, res) => {
     card.set({
         saldo: updatedSaldo
     });
-    await topup.save();
+    await userTopup.save();
     await card.save();
-    return res.status(201).json({ topup, card });
+    return res.status(201).json({ userTopup, card });
 }
 
-module.exports = createTopUp;
+module.exports = createUserTopUp;
