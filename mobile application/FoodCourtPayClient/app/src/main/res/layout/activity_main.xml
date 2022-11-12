@@ -7,23 +7,15 @@
     android:padding="24dp"
     tools:context=".layout.MainActivity">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/circleImageProfile"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/profile"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_hello"
-        app:layout_constraintStart_toEndOf="@id/circleImageProfile"
+        app:layout_constraintStart_toStartOf="parent"
         android:text="@string/hello"
         app:layout_constraintTop_toTopOf="parent"
-        android:textSize="12sp"
-        android:textColor="@color/black"
+        android:textSize="16sp"
+        style="@style/text_style"
         android:layout_marginStart="11dp"
         android:layout_marginTop="4dp" />
 
@@ -34,8 +26,8 @@
         app:layout_constraintStart_toEndOf="@id/tv_hello"
         android:text="@string/name"
         app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/black"
-        android:textSize="12sp"
+        style="@style/text_style"
+        android:textSize="16sp"
         android:layout_marginTop="4dp"
         android:layout_marginStart="2dp"/>
 
@@ -46,15 +38,15 @@
         app:layout_constraintStart_toEndOf="@id/tv_name"
         android:text="@string/exclamation"
         app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/black"
+        style="@style/text_style"
         android:textSize="12sp"
         android:layout_marginTop="4dp"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="210dp"
         android:id="@+id/cardMenu"
-        app:layout_constraintTop_toBottomOf="@id/circleImageProfile"
+        app:layout_constraintTop_toBottomOf="@id/tv_hello"
         android:layout_marginTop="15dp"
         android:backgroundTint="@color/primary_red"
         app:cardCornerRadius="25dp" >
@@ -71,6 +63,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="17dp"
                 android:textStyle="bold"
+                android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
             
@@ -80,6 +73,7 @@
                 android:id="@+id/tv_card_name"
                 android:text="@string/kartu_makan_jkt"
                 android:textColor="@color/white"
+                android:fontFamily="@font/poppins_regular"
                 android:layout_marginStart="24dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_balance" />
@@ -94,6 +88,7 @@
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:fontFamily="@font/poppins_regular"
                 android:layout_marginTop="23dp"
                 android:layout_marginEnd="24dp" />
             
@@ -103,59 +98,68 @@
                 android:id="@+id/tv_rp"
                 android:text="@string/rp"
                 android:textColor="@color/white"
+                android:fontFamily="@font/poppins_regular"
                 android:textStyle="bold"
                 app:layout_goneMarginTop="5dp"
                 app:layout_constraintEnd_toStartOf="@id/saldo"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="24dp" />
-            
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tv_card_name"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/tv_card_name">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="70dp"
                     android:orientation="vertical">
+
                     <ImageButton
+                        android:id="@+id/btn_pay"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
-                        android:id="@+id/btn_pay"
-                        android:backgroundTint="#FFC86F"
                         android:background="@drawable/roundedcorner"
+                        android:backgroundTint="#FFC86F"
+                        android:contentDescription="@string/pay"
                         android:src="@drawable/ic_baseline_account_balance_wallet_24" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/pay"
                         android:layout_gravity="center"
-                        android:textSize="16sp"
-                        android:textColor="@color/white" />
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/pay"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
                     <ImageButton
+                        android:id="@+id/btn_topup"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
-                        android:id="@+id/btn_topup"
-                        android:backgroundTint="#FFC86F"
                         android:background="@drawable/roundedcorner"
+                        android:backgroundTint="#FFC86F"
+                        android:contentDescription="@string/topup"
                         android:src="@drawable/ic_add_24" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/topup"
                         android:layout_gravity="center"
-                        android:textSize="16sp"
-                        android:textColor="@color/white" />
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/topup"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -166,7 +170,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/tv_history"
         android:text="@string/history"
-        android:textColor="@color/black"
+        style="@style/text_style"
         android:textStyle="bold"
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@id/cardMenu"
@@ -179,7 +183,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/tv_more"
         android:text="@string/more"
-        android:textColor="@color/black"
+        style="@style/text_style"
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@id/cardMenu"
         app:layout_constraintEnd_toEndOf="parent"
@@ -197,6 +201,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/rv_transaction"
         app:layout_constraintTop_toBottomOf="@id/tv_history"
+        tools:listitem="@layout/item_transaction"
         android:layout_marginTop="10dp" >
     </androidx.recyclerview.widget.RecyclerView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,13 +4,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-<<<<<<< HEAD
     <uses-feature android:name="android.hardware.camera" />
 
     <uses-permission android:name="android.permission.CAMERA" />
 
-=======
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -21,60 +18,47 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodCourtPayClient"
         tools:targetApi="31">
+
         <activity
-<<<<<<< HEAD
+            android:name=".layout.MainActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value=""/>
+        </activity>
+        <activity
             android:name=".layout.CreatePinActivity"
             android:parentActivityName=".layout.SignupActivity"
-=======
-            android:name=".HistoryTransactionActivity"
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-<<<<<<< HEAD
             android:name=".layout.BankPaymentActivity"
             android:exported="false"
             android:parentActivityName=".layout.TopupActivity">
-=======
-            android:name=".TopupActivity"
-            android:exported="false"
-            android:parentActivityName=".MainActivity">
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-<<<<<<< HEAD
             android:name=".layout.HistoryTransactionActivity"
             android:parentActivityName=".layout.MainActivity"
-=======
-            android:name=".ConfirmationActivity"
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-<<<<<<< HEAD
             android:name=".layout.TopupActivity"
             android:exported="false"
             android:parentActivityName=".layout.MainActivity">
-=======
-            android:name=".PaymentPinActivity"
-            android:exported="false"
-            android:parentActivityName=".PaymentActivity">
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-<<<<<<< HEAD
             android:name=".layout.ConfirmationActivity"
             android:exported="false">
             <meta-data
@@ -85,73 +69,43 @@
             android:name=".layout.PaymentPinActivity"
             android:exported="false"
             android:parentActivityName=".layout.PaymentActivity">
-=======
-            android:name=".PaymentActivity"
-            android:exported="false"
-            android:parentActivityName=".PayCameraActivity">
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-<<<<<<< HEAD
             android:name=".layout.PaymentActivity"
             android:exported="false"
             android:parentActivityName=".layout.PayCameraActivity">
-=======
-            android:name=".PayCameraActivity"
-            android:exported="false"
-            android:parentActivityName=".MainActivity">
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-<<<<<<< HEAD
             android:name=".layout.PayCameraActivity"
             android:exported="false"
             android:parentActivityName=".layout.MainActivity">
-=======
-            android:name=".NotificationActivity"
-            android:exported="false"
-            android:parentActivityName=".MainActivity">
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-<<<<<<< HEAD
             android:name=".layout.NotificationActivity"
             android:exported="false"
             android:parentActivityName=".layout.MainActivity">
-=======
-            android:name=".SignupActivity"
-            android:exported="false"
-            android:parentActivityName=".StartActivity">
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-<<<<<<< HEAD
             android:name=".layout.SignupActivity"
             android:exported="false"
             android:parentActivityName=".layout.StartActivity">
-=======
-            android:name=".LoginActivity"
-            android:exported="false"
-            android:parentActivityName=".StartActivity">
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-<<<<<<< HEAD
             android:name=".layout.LoginActivity"
             android:exported="false"
             android:parentActivityName=".layout.StartActivity">
@@ -161,9 +115,6 @@
         </activity>
         <activity
             android:name=".layout.StartActivity"
-=======
-            android:name=".StartActivity"
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -175,17 +126,5 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-<<<<<<< HEAD
-            android:name=".layout.MainActivity"
-=======
-            android:name=".MainActivity"
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
     </application>
-
 </manifest>

@@ -17,11 +17,7 @@
     <string name="balance">Balance</string>
     <string name="kartu_makan_jkt">Kartu Makan JKT</string>
     <string name="rp">Rp. </string>
-<<<<<<< HEAD
     <string name="saldo_value">...........</string>
-=======
-    <string name="saldo_value">2.500.000</string>
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
     <string name="hello">Hello,</string>
     <string name="exclamation">!</string>
     <string name="pay">Pay</string>
@@ -37,11 +33,7 @@
     <string name="x">x</string>
     <string name="total">Total</string>
     <string name="proceed_to_pay">Proceed to Pay</string>
-<<<<<<< HEAD
-    <string name="pin">PIN</string>
-=======
-    <string name="pin">Pin</string>
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
+    <string name="pin">PIN</string>\
     <string name="enter_pin">Enter your 6-digit pin</string>
     <string name="success">Success!</string>
     <string name="thanks_paying">Thank you for paying</string>
@@ -56,7 +48,6 @@
     <string name="transaction_history">Transaction History</string>
     <string name="scan">Scan QR</string>
     <string name="payment">Payment</string>
-<<<<<<< HEAD
     <string name="create_pin">Create Pin</string>
     <string name="create_6_digit_pin">Create your 6-digit pin</string>
     <string name="confirm">Confirm</string>
@@ -64,6 +55,18 @@
     <string name="blank">......</string>
     <string name="date">dd/mm/yyyy</string>
     <string name="bank_payment">Bank Payment</string>
-=======
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
+    <string name="cashier">Cashier</string>
+    <string name="i_already_have_an_account">I already have an account</string>
+    <string name="bank_topup">Bank Topup</string>
+    <string name="how_to_bank">How to Top Up with Bank Payment</string>
+    <string name="admin_fee">Admin Fee:</string>
+    <string name="min_top_up">Min. Top Up</string>
+    <string name="_1_000">1.000</string>
+    <string name="_10_000">10.000</string>
+    <string name="bank1">1. Open your</string>
+    <string name="bank2"><![CDATA[2. Select Pembelian > Top Up FoodCourtApp > Customer]]></string>
+    <string name="bank3">3. Enter your registered FoodCourtApp phone number</string>
+    <string name="bank4">4. Enter your top up amount</string>
+    <string name="bank5">5. Enter your pin and complete your transaction</string>
+    <string name="wallet">wallet</string>
 </resources>

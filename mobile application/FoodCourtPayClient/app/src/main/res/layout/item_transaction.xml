@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tv_transaction"
             android:text="@string/blank"
-            android:textColor="@color/black"
+            style="@style/text_style"
             android:textStyle="bold"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,6 +27,7 @@
             android:id="@+id/tv_location"
             app:layout_constraintTop_toBottomOf="@id/tv_transaction"
             app:layout_constraintStart_toStartOf="parent"
+            style="@style/text_style"
             android:text="@string/blank"
             android:textSize="14sp" />
 
@@ -37,7 +38,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_location"
             app:layout_constraintStart_toStartOf="parent"
             android:text="@string/date"
-            android:textColor="@color/black"
+            style="@style/text_style"
             android:textSize="14sp" />
 
         <TextView
@@ -47,6 +48,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_location"
             android:text="@string/blank"
+            style="@style/text_style"
             android:textSize="14sp"
             android:textStyle="bold" />
 

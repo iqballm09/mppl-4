@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
-    tools:context=".WithdrawReceiptActivity">
+    tools:context=".layout.WithdrawReceiptActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -16,7 +16,7 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/black" />
+        style="@style/text_style" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -35,6 +35,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/card_name"
                 android:text="@string/business"
+                android:fontFamily="@font/poppins_regular"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:textColor="@color/white"
@@ -48,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_bank_name"
                 android:text="@string/bank_name"
+                android:fontFamily="@font/poppins_regular"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/card_name"
                 android:textColor="@color/white"
@@ -59,6 +61,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_bank_account"
                 android:text="@string/bank_account"
+                android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:layout_constraintTop_toBottomOf="@id/tv_bank_name"
@@ -71,6 +74,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_date"
                 android:text="@string/dd_mm_yyyy"
+                android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:layout_constraintTop_toBottomOf="@id/tv_bank_account"
@@ -108,7 +112,7 @@
         android:text="@string/receipt"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        style="@style/text_style"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/separator"
         android:layout_marginTop="14dp"/>
@@ -199,6 +203,7 @@
         android:id="@+id/btn_proceed"
         android:layout_marginTop="32dp"
         app:layout_constraintTop_toBottomOf="@id/table_receipt"
+        android:fontFamily="@font/poppins_regular"
         android:text="@string/continue_text"
         android:textAllCaps="false"
         android:textStyle="bold"

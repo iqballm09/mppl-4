@@ -4,12 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="22dp"
+    android:padding="24dp"
     tools:context=".layout.SignupActivity">
 
-    <EditText
-        android:layout_marginTop="145dp"
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/iv_logo"
+        android:src="@drawable/foodcourtapp_color"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        app:layout_constraintTop_toBottomOf="@id/iv_logo"
         android:hint="@string/name"
         android:id="@+id/edt_name"
         android:background="@drawable/custom_edt"
@@ -70,6 +77,7 @@
         android:layout_marginTop="35dp"
         android:background="@drawable/btn_radius"
         android:backgroundTint="@color/primary_red"
+        android:fontFamily="@font/poppins_regular"
         android:text="@string/continue_text"
         android:textAllCaps="false"
         android:textColor="@color/white"
@@ -79,25 +87,15 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_forgot_password"
+        android:id="@+id/tv_account_already"
         android:textColor="@color/primary_red"
         android:textStyle="bold"
-        android:text="@string/forgot_password"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/i_already_have_an_account"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="40dp"
         app:layout_constraintTop_toBottomOf="@id/btn_signup"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_no_account"
-        android:textColor="@color/primary_red"
-        android:textStyle="bold"
-        android:text="@string/no_account"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="14dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_forgot_password"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

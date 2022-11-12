@@ -16,6 +16,7 @@
     
     <style name="text_style">
         <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
     </style>
     
     <style name="edt_regist_fields">
@@ -23,13 +24,14 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">5dp</item>
         <item name="android:padding">5dp</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
     </style>
     
     <style name="tv_table_receipt">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
     </style>
-<<<<<<< HEAD
 
     <style name="progress_bar_style">
         <item name="android:layout_width">wrap_content</item>
@@ -39,6 +41,4 @@
         <item name="layout_constraintTop_toTopOf">parent</item>
         <item name="layout_constraintBottom_toBottomOf">parent</item>
     </style>
-=======
->>>>>>> aa3e4259c252504fbb985bae4edab300836625b7
 </resources>
