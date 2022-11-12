@@ -21,6 +21,18 @@ module.exports = {
           notEmpty: { msg: "password must not be empty" }
         }
       },
+      merchantName: {
+        type: Sequelize.STRING(500),
+        validate: {
+          notEmpty: { msg: "name must not be empty" }
+        }
+      },
+      foodCourtName: {
+        type: Sequelize.STRING(500),
+        validate: {
+          notEmpty: { msg: "name must not be empty" }
+        }
+      },
       email: {
         type: Sequelize.STRING(100),
         unique: true,
@@ -30,6 +42,9 @@ module.exports = {
       },
       phoneNumber: {
         type: Sequelize.STRING(50)
+      },
+      location: {
+        type: Sequelize.STRING(1000)
       },
       photo: {
         type: Sequelize.STRING(1024),
@@ -41,9 +56,6 @@ module.exports = {
         validate: {
           notEmpty: { msg: 'pin number must not be empty' },
         }
-      },
-      location: {
-        type: Sequelize.STRING(1000)
       },
       income: {
         type: Sequelize.DECIMAL(20),

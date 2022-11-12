@@ -19,6 +19,18 @@ const Merchant = sequelize.define("Merchant", {
             notEmpty: { msg: "password must not be empty" }
         }
     },
+    merchantName: {
+        type: Sequelize.STRING(500),
+        validate: {
+            notEmpty: { msg: "name must not be empty" }
+        }        
+    },
+    foodCourtName: {
+        type: Sequelize.STRING(500),
+        validate: {
+            notEmpty: { msg: "name must not be empty" }
+        }
+    },
     email: {
         type: Sequelize.STRING(100),
         unique: true,
@@ -51,8 +63,6 @@ const Merchant = sequelize.define("Merchant", {
 
 // Define association
 Merchant.associate = function (models) {
-    Merchant.hasMany(models.Menu, { foreignKey: "MerchantID" });
-    Merchant.hasMany(models.Order, { foreignKey: "MerchantID" });
     Merchant.hasMany(models.Withdraw, { foreignKey: "MerchantID" });
     Merchant.hasMany(models.TopUpCashier, { foreignKey: "MerchantID" });
 }

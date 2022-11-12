@@ -40,7 +40,6 @@ const User = sequelize.define('User', {
 
 // Define associations
 User.associate = function (models) {
-    User.hasMany(models.Order, { foreignKey: 'UserID' });
     User.hasOne(models.Card, { foreignKey: 'UserID' });
 }
 

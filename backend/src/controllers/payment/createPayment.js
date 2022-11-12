@@ -2,6 +2,7 @@ const Payment = require("../../models/Payment");
 const bcrypt = require("bcryptjs");
 const Card = require("../../models/Card");
 const dotenv = require("dotenv");
+const Merchant = require("../../models/Merchant");
 
 dotenv.config();
 
@@ -14,7 +15,10 @@ const createPayment = async(req, res) => {
         where: { UserID: userID }
     });
     if (!card) return res.status(404).send(`Card with UserID: ${ userID } is not found`);    
-
+    // Get merchant by id
+    const merchant = await Merchant.findOne({
+        where: { id: req.body.id }
+    });
     // Proceed to payment
     if (req.body.pinNumber) {
         // Checking if pin number is correct
@@ -26,6 +30,13 @@ const createPayment = async(req, res) => {
         card.set({ 
             saldo: updatedSaldo
         });
+        // Update income of merchant
+        const updatedIncome = merchant.income + req.body.amount;
+        merchant.set({
+            foodCourtName: req.body.foodcourtName,
+            merchantName: req.body.merchantName,
+            income: updatedIncome
+        });
         // Create payment
         const payment = await Payment.create({
             CardID: card.id,
@@ -36,7 +47,8 @@ const createPayment = async(req, res) => {
         });
         await payment.save();
         await card.save();
-        return res.status(201).json({ payment, card });
+        await merchant.save();
+        return res.status(201).json({ payment, merchant, card });
     } else {
         return res.status(500).send("Pin number is empty");
     }

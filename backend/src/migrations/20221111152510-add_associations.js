@@ -83,60 +83,12 @@ module.exports = {
       .then(() => {
         // Card hasMany Payment
         return queryInterface.addColumn(
-          'menus', // name of Target model
+          'payments', // name of Target model
           'MerchantID', // name of the key we're adding
           {
             type: Sequelize.INTEGER,
             references: {
               model: 'merchants', // name of Source model
-              key: 'id',
-            },
-            onUpdate: 'CASCADE',
-            onDelete: 'SET NULL',
-          }
-        );
-      })
-      .then(() => {
-        // Card hasMany Payment
-        return queryInterface.addColumn(
-          'orders', // name of Source model
-          'UserID', // name of the key we're adding
-          {
-            type: Sequelize.INTEGER,
-            references: {
-              model: 'users', // name of Target model
-              key: 'id', // key in Target model that we're referencing
-            },
-            onUpdate: 'CASCADE',
-            onDelete: 'SET NULL',
-          }
-        )
-      })
-      .then(() => {
-        // Card hasMany Payment
-        return queryInterface.addColumn(
-          'orders', // name of Target model
-          'MerchantID', // name of the key we're adding
-          {
-            type: Sequelize.INTEGER,
-            references: {
-              model: 'merchants', // name of Source model
-              key: 'id',
-            },
-            onUpdate: 'CASCADE',
-            onDelete: 'SET NULL',
-          }
-        );
-      })
-      .then(() => {
-        // Card hasMany Payment
-        return queryInterface.addColumn(
-          'orders', // name of Target model
-          'MenuID', // name of the key we're adding
-          {
-            type: Sequelize.INTEGER,
-            references: {
-              model: 'menus', // name of Source model
               key: 'id',
             },
             onUpdate: 'CASCADE',
@@ -193,27 +145,9 @@ module.exports = {
       })
       .then(() => {
         return queryInterface.removeColumn(
-          'menus', // name of the Target model
+          'payments', // name of the Target model
           'MerchantID' // key we want to remove
         );
-      })
-      .then(() => {
-        return queryInterface.removeColumn(
-          'orders', // name of Source model
-          'UserID' // key we want to remove
-        )
-      })
-      .then(() => {
-        return queryInterface.removeColumn(
-          'orders', // name of Source model
-          'MerchantID' // key we want to remove
-        )
-      })
-      .then(() => {
-        return queryInterface.removeColumn(
-          'orders', // name of Source model
-          'MenuID' // key we want to remove
-        )
       })
       .then(() => {
         return queryInterface.removeColumn(

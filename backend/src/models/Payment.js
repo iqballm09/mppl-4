@@ -14,6 +14,13 @@ const Payment = sequelize.define("Payment", {
             key: 'id'
         }
     },
+    MerchantID: {
+        type: Sequelize.INTEGER,
+        references: {
+            model: 'merchants',
+            key: 'id'
+        }
+    },
     amount: {
         type: Sequelize.DECIMAL(20),
         defaultValue: 0
@@ -32,6 +39,7 @@ const Payment = sequelize.define("Payment", {
 // Define association
 Payment.associate = function (models) {
     Payment.belongsTo(models.Card, { foreignKey: 'CardID' });
+    Payment.belongsTo(models.Merchant, { foreignKey: 'MerchantID' });
 }
 
 module.exports = Payment;

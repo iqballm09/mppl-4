@@ -19,10 +19,6 @@ const createCashierTopUp = require("../controllers/topupCashier/createTopupCashi
 const { getAllCashierTopUps, getCashierTopUpById } = require("../controllers/topupCashier/readTopupCashier");
 const createWithdraw = require("../controllers/withdraw/createWithdraw");
 const { getAllWithdraws, getWithdrawById } = require("../controllers/withdraw/readWithdraw");
-const createMenu = require("../controllers/menu/createMenu");
-const { getAllMenus, getMenuById } = require("../controllers/menu/readMenu");
-const updateMenu = require("../controllers/menu/updateMenu");
-const deleteMenu = require("../controllers/menu/deleteMenu");
 
 // User endpoints
 /* Register - Login */
@@ -67,11 +63,5 @@ router.post('/withdraws/merchantID', verifyMerchant, createWithdraw);
 router.get('/withdraws/merchantID', verifyMerchant, getAllWithdraws); // By merchant id
 router.get('/withdraws/id/merchantID', verifyMerchant, getWithdrawById);
 
-// Menu endpoints
-router.post('/menus/merchantID', verifyMerchant, createMenu);
-router.get('/menus/merchantID', verifyMerchant, getAllMenus); // By merchant id
-router.get('/menus/id/merchantID', verifyMerchant, getMenuById);
-router.put('/menus/id/merchantID', verifyMerchant, updateMenu);
-router.delete('/menus/id/merchantID', verifyMerchant, deleteMenu);
 
 module.exports = router;
