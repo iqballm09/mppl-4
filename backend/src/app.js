@@ -2,6 +2,7 @@ const sequelize = require("./database/connection");
 const bodyParser = require("body-parser");
 const routes = require("./routes");
 const express = require("express");
+const PORT = 3000;
 
 const app = express();
 app.use(bodyParser.json());
@@ -9,7 +10,7 @@ app.use(bodyParser.json());
 app.use("/api", routes);
 
 // Testing connection
-app.listen({ port: 3000 }, async () => {
+app.listen(PORT, async () => {
     try {
         await sequelize.authenticate();
         console.log("Database has been connected!");
