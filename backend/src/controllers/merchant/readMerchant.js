@@ -27,7 +27,7 @@ const getMerchantByEmail = async (req, res) => {
     if (!validPassword) return res.status(400).send("Invalid password!");
     // Create and assign token
     const token = jwt.sign({ id: merchant.id, email: merchant.email }, process.env.TOKEN_SECRET);
-    return res.status(202).header('auth-token', token).json({ token });
+    return res.status(202).header('auth-token', token).json({ token, id: merchant.id, name: merchant.name });
 }
 
 // Get user by id
