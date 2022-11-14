@@ -18,7 +18,7 @@ const getAllUsers = async (req, res) => {
 // Get user by email --> Login
 const getUserByEmail = async (req, res) => {
     // Check if email is already exists
-    const user = await User.findOne({ 
+    const user = await User.findOne({
         where: { email: req.body.email }
     });
     if (!user) return res.status(404).send(`User with email: ${req.body.email} is not found`);
@@ -27,7 +27,7 @@ const getUserByEmail = async (req, res) => {
     if (!validPassword) return res.status(400).send("Invalid password!");
     // Create and assign token
     const token = jwt.sign({ id: user.id, email: user.email }, process.env.TOKEN_SECRET);
-    return res.status(202).header('auth-token', token).json({ token });
+    return res.status(202).header('auth-token', token).json({ token, id: user.id, name: user.name });
 }
 
 // Get user by id
