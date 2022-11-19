@@ -24,7 +24,7 @@ const getCard = async (req, res) => {
         }
     });
     // Check if card already exists
-    if (!card) return res.status(404).send(`Card with id: ${req.body.id} and UserID: ${userID} is not found`);
+    if (!card) return res.status(404).send(`Card with id: ${card.id} and UserID: ${userID} is not found`);
     return res.status(200).json({ card });
 }
 
