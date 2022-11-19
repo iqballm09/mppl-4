@@ -4,21 +4,20 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.foodcourtpayclient.R
-import com.example.foodcourtpayclient.databinding.ActivityPaymentBinding
+import com.example.foodcourtpayclient.databinding.ActivityPayment2Binding
 
-class PaymentActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityPaymentBinding
-
+class PaymentActivity2 : AppCompatActivity() {
+    private lateinit var binding: ActivityPayment2Binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPaymentBinding.inflate(layoutInflater)
+        binding = ActivityPayment2Binding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.setTitle(R.string.payment)
+        supportActionBar?.setTitle(R.string.billing)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         binding.btnProceed.setOnClickListener {
-            val intent = Intent(this, PaymentActivity2::class.java)
-            startActivity(intent)
+            val binding = Intent(this, PaymentPinActivity::class.java)
+            startActivity(binding)
         }
     }
 }

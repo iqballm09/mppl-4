@@ -39,7 +39,7 @@
         android:text="@string/exclamation"
         app:layout_constraintTop_toTopOf="parent"
         style="@style/text_style"
-        android:textSize="12sp"
+        android:textSize="16sp"
         android:layout_marginTop="4dp"/>
 
     <androidx.cardview.widget.CardView
