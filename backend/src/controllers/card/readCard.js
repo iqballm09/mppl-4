@@ -18,7 +18,7 @@ const getCard = async (req, res) => {
     // Get payload
     const userID = req.user.id;
     // Read card
-    const card = await Card.findOne({ 
+    const card = await Card.findOne({
         where: {
             UserID: userID
         }
