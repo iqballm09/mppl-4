@@ -1,20 +1,20 @@
 import './App.css';
 import { React, useState } from "react";
 import { Button, Alert, Form, Card } from "react-bootstrap";
-import useFetch from 'react-fetch-hook';
+import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import validator from 'validator';
+
+const api = axios.create({
+  baseURL: "https://foodpayapi.up.railway.app/api"
+});
+
 
 function App() {
   // Handle input and output
   const [amount, setAmount] = useState('');
   const [isShowRed, setShowRed] = useState(false);
   const [isShowGreen, setShowGreen] = useState(false);
-
-  // Fetch data from api
-  const { isLoading, error, data } = useFetch("https://foodpayapi.up.railway.app/api/users");
-  if(isLoading) return console.log("Loading...");
-  if(error) return console.log("Error...");
 
   const handleChange = event => {
     setAmount(event.target.value);
@@ -25,7 +25,7 @@ function App() {
     setAmount(event.target.value);
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = async(event) => {
     let userEmail = event.target.userEmail.value;
     let inputAmount = event.target.inputAmount.value;
     event.preventDefault();
@@ -35,9 +35,13 @@ function App() {
     } else {
       setShowGreen(true);
       setShowRed(false);
+      api.post("/cashierTopups/cardID/merchantID", { email: userEmail, amount: inputAmount })
     }
-    console.log(userEmail);
-    console.log(inputAmount);
+  };
+
+  // Post data to database
+  const createTopUp = async () => {
+    api.post("/", {  })
   };
 
   return (
