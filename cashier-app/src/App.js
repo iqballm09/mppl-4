@@ -35,13 +35,10 @@ function App() {
     } else {
       setShowGreen(true);
       setShowRed(false);
-      api.post("/cashierTopups/cardID/merchantID", { email: userEmail, amount: inputAmount })
+      let res = await api.post("/cashierTopups/cardID/merchantID", { email: userEmail, 
+                               amount: inputAmount });
+      console.log(res);
     }
-  };
-
-  // Post data to database
-  const createTopUp = async () => {
-    api.post("/", {  })
   };
 
   return (
