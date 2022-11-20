@@ -2,17 +2,19 @@ import './App.css';
 import { React, useState } from "react";
 import { Button, Alert, Form, Card } from "react-bootstrap";
 import useFetch from 'react-fetch-hook';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import validator from 'validator';
 
 function App() {
-  // Fetch data from api
-  const { isLoading, error, data } = useFetch();
-
   // Handle input and output
   const [amount, setAmount] = useState('');
   const [isShowRed, setShowRed] = useState(false);
   const [isShowGreen, setShowGreen] = useState(false);
+
+  // Fetch data from api
+  const { isLoading, error, data } = useFetch("https://foodpayapi.up.railway.app/api/users");
+  if(isLoading) return console.log("Loading...");
+  if(error) return console.log("Error...");
 
   const handleChange = event => {
     setAmount(event.target.value);
