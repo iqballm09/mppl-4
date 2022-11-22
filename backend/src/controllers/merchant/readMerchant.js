@@ -38,7 +38,7 @@ const getMerchantById = async (req, res) => {
     const merchant = await Merchant.findOne({
         where: { id: merchantID }
     });
-    if (!merchant) return res.status(404).send(`Merchant with id: ${ merchantID } is not found`);
+    if (!merchant) return res.status(404).send(`Merchant with id: ${merchantID} is not found`);
     return res.status(200).json({ merchant });
 }
 
