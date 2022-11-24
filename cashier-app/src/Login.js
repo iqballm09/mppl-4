@@ -2,21 +2,21 @@ import { useRef, useContext, useState, useEffect } from 'react';
 import axios from './api/axios';
 import AuthContext from './context/AuthProvider';
 
-const LOGIN_URL = 'merchants/login';
+const LOGIN_URL = '/api/merchants/login';
 
 const Login = () => {
     const { setAuth } = useContext(AuthContext);
     const errRef = useRef();
 
     const [email, setEmail] = useState('');
-    const [pwd, setPwd] = useState('');
+    const [password, setPwd] = useState('');
     const [errMsg, setMsgErr] = useState('');
     const [passwordShown, setPasswordShown] = useState(false);
     const [success, setSuccess] = useState(false);
 
     useEffect(() => {
         setMsgErr('');
-    }, [email, pwd]);
+    }, [email, password]);
 
     // Password toggle handler
     const togglePassword = () => {
@@ -27,12 +27,12 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        console.log({ email, password });
         try {
             const response = await axios.post(LOGIN_URL,
-                JSON.stringify({ email, pwd }),
+                JSON.stringify({ email: email, password: password }),
                 {
-                    headers: { 'content-type': 'application/json' }
+                    headers: { 'Content-Type': 'application/json' }
                 }
             );
             console.log(JSON.stringify(response?.data));
@@ -40,7 +40,7 @@ const Login = () => {
             const token = response?.data?.token;
             const merchantId = response?.data?.id;
             // Pass data
-            setAuth({ email, pwd, merchantId, token });
+            setAuth({ email, password, merchantId, token });
             setEmail('');
             setPwd('');
             setSuccess(true);
@@ -65,7 +65,7 @@ const Login = () => {
                     <h1>You are logged in!</h1>
                     <br />
                     <p>
-                        <a>Go to Home</a>
+                        Go to Home
                     </p>
                 </section>
             ) : (
@@ -78,19 +78,19 @@ const Login = () => {
                             type="email"
                             id="email"
                             autoComplete="off"
-                            onChange={ (e) => setEmail(e.target.value) }
+                            onChange={(e) => setEmail(e.target.value)}
                             value={email}
                             required
                         />
                         <label>Password</label>
                         <input
-                            type={ passwordShown ? "text" : "password" }
+                            type={passwordShown ? "text" : "password"}
                             id="password"
-                            onChange={ (e) => setPwd(e.target.value) }
-                            value={pwd}
+                            onChange={(e) => setPwd(e.target.value)}
+                            value={password}
                             required
                         />
-                        <checkbox onClick={togglePassword}><a>Show Password</a></checkbox>
+                        <p onClick={togglePassword}>Show Password</p>
                         <button type='submit'>Sign In</button>
                     </form>
                 </section >
