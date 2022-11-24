@@ -40,6 +40,7 @@ const Login = () => {
                 }
             );
             console.log(JSON.stringify(response?.data));
+            alert("Log in successfull")
             const merchantID = response?.data?.id;
             // Pass data
             setMerchantID(merchantID);
@@ -75,19 +76,27 @@ const Login = () => {
             setEmailTopup('');
             setAmount('');
             setSuccess(true);
-            setMsgErr('Top Up Successfull');
+            alert('Top Up Successfull');
         } catch (err) {
             if (!err?.response) {
                 setMsgErr('No Server Response');
             } else if (err.response?.status === 400) {
                 setMsgErr('Missing Email or Amount');
-            } else if (err.response?.status === 401) {
+            } else if (err.response?.status === 404) {
+                setMsgErr('User not found');
+            }
+            else if (err.response?.status === 401) {
                 setMsgErr('Unauthorized');
             } else {
                 setMsgErr('Top Up Failed');
             }
             errRef.current.focus();
-        }        
+        }
+    }
+
+    const handleLogOut = async (e) => {
+        alert('Logout successfully');
+        window.location.reload(false);
     }
 
     return (
@@ -116,6 +125,7 @@ const Login = () => {
                         />
                         <button type='submit'>Proceed</button>
                     </form>
+                    <button onClick={handleLogOut}>Log Out</button>
                 </section>
             ) : (
                 <section>
