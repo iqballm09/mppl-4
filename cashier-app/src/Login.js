@@ -1,14 +1,15 @@
-import { useRef, useContext, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import axios from './api/axios';
-import AuthContext from './context/AuthProvider';
 
 const LOGIN_URL = '/api/merchants/login';
+const TOPUP_URL = '/api/cashierTopups/cardID/merchantID'
 
 const Login = () => {
-    const { setAuth } = useContext(AuthContext);
     const errRef = useRef();
-
     const [email, setEmail] = useState('');
+    const [merchantID, setMerchantID] = useState('');
+    const [emailTopup, setEmailTopup] = useState('');
+    const [amount, setAmount] = useState('');
     const [password, setPwd] = useState('');
     const [errMsg, setMsgErr] = useState('');
     const [passwordShown, setPasswordShown] = useState(false);
@@ -17,6 +18,9 @@ const Login = () => {
     useEffect(() => {
         setMsgErr('');
     }, [email, password]);
+    useEffect(() => {
+        setMsgErr('');
+    }, [emailTopup, amount]);
 
     // Password toggle handler
     const togglePassword = () => {
@@ -36,11 +40,9 @@ const Login = () => {
                 }
             );
             console.log(JSON.stringify(response?.data));
-            // Access token
-            const token = response?.data?.token;
-            const merchantId = response?.data?.id;
+            const merchantID = response?.data?.id;
             // Pass data
-            setAuth({ email, password, merchantId, token });
+            setMerchantID(merchantID);
             setEmail('');
             setPwd('');
             setSuccess(true);
@@ -58,15 +60,62 @@ const Login = () => {
         }
     }
 
+    const handleSubmitTopUp = async (e) => {
+        e.preventDefault();
+        console.log({ emailTopup, amount, merchantID });
+        try {
+            const response = await axios.post(TOPUP_URL,
+                JSON.stringify({ merchantID: merchantID, email: emailTopup, amount: Number(amount) }),
+                {
+                    headers: { 'Content-Type': 'application/json' }
+                }
+            );
+            console.log(JSON.stringify(response?.data));
+            // Pass data
+            setEmailTopup('');
+            setAmount('');
+            setSuccess(true);
+            setMsgErr('Top Up Successfull');
+        } catch (err) {
+            if (!err?.response) {
+                setMsgErr('No Server Response');
+            } else if (err.response?.status === 400) {
+                setMsgErr('Missing Email or Amount');
+            } else if (err.response?.status === 401) {
+                setMsgErr('Unauthorized');
+            } else {
+                setMsgErr('Top Up Failed');
+            }
+            errRef.current.focus();
+        }        
+    }
+
     return (
         <>
             {success ? (
                 <section>
-                    <h1>You are logged in!</h1>
-                    <br />
-                    <p>
-                        Go to Home
-                    </p>
+                    <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+                    <h2>Foodpay Cashier - Topup</h2>
+                    <form onSubmit={handleSubmitTopUp}>
+                        <label>Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            autoComplete="off"
+                            onChange={(e) => setEmailTopup(e.target.value)}
+                            value={emailTopup}
+                            required
+                        />
+                        <label>Amount</label>
+                        <input
+                            type="text"
+                            id="amount"
+                            onChange={(e) => setAmount(e.target.value)}
+                            value={amount}
+                            required
+                        />
+                        <button type='submit'>Proceed</button>
+                    </form>
                 </section>
             ) : (
                 <section>

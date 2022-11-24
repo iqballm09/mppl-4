@@ -50,7 +50,7 @@ router.get('/userTopups/cardID', verifyUser, getAllUserTopUps); // By card id
 router.get('/userTopups/id/cardID', verifyUser, getUserTopUpById);
 
 // Topup - Cashier (Merchant) endpoints
-router.post('/cashierTopups/cardID/merchantID', verifyMerchant, createCashierTopUp);
+router.post('/cashierTopups/cardID/merchantID', createCashierTopUp);
 router.get('/cashierTopups/merchantID', verifyMerchant, getAllCashierTopUps); // By merchant id
 router.get('/cashierTopups/id/merchantID', verifyMerchant, getCashierTopUpById);
 
