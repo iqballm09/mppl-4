@@ -10,7 +10,7 @@ dotenv.config();
 // Create payment
 const createPayment = async (req, res) => {
     // Get user id
-    const userID = req.params.id;
+    const userID = req.params.userID;
     // Read card
     const card = await Card.findOne({
         where: { UserID: userID }
