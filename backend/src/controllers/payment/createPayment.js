@@ -9,10 +9,8 @@ dotenv.config();
 
 // Create payment
 const createPayment = async (req, res) => {
-    // Get payload
-    const userID = req.user.id;
-    // Read payment params
-    const merchantID = req.params.merchantID;
+    // Get user id
+    const userID = req.params.id;
     // Read card
     const card = await Card.findOne({
         where: { UserID: userID }
@@ -20,7 +18,7 @@ const createPayment = async (req, res) => {
     if (!card) return res.status(404).send(`Card with UserID: ${userID} is not found`);
     // Get merchant by id
     const merchant = await Merchant.findOne({
-        where: { id: merchantID }
+        where: { id: req.body.merchantID }
     });
     // Proceed to payment
     if (req.body.pinNumber) {
