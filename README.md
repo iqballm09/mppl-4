@@ -1,4 +1,11 @@
-# mppl-4
+# FoodCourt-Pay
+
+|No. |Nama Anggota            |Role                   |
+|1.  |Fatimah Alfiatul Jannah |Project Manager        |
+|2.  |M. Iqbal                |Backend Engineer       |      
+|3.  |Farhan Faturrahman      |Mobile Engineer and QA |
+|4.  |Ramadhanti Nisa P.      |UI/UX Engineer         |
+
 
 ## ERD
 
