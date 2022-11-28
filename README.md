@@ -39,6 +39,7 @@ Tujuan dari pengembangan perangkat lunak ini adalah untuk memudahkan merchant da
 ## Activity Diagram
 
 ## ERD
+![Foodpay ERD](foodcourt_erd.png)
 
 ## Link Video Demo
 
