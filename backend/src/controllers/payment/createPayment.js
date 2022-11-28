@@ -3,14 +3,13 @@ const bcrypt = require("bcryptjs");
 const Card = require("../../models/Card");
 const dotenv = require("dotenv");
 const Merchant = require("../../models/Merchant");
-const url = require("url");
 
 dotenv.config();
 
 // Create payment
 const createPayment = async (req, res) => {
     // Get user id
-    const userID = req.params.userID;
+    const userID = req.user.id;
     // Read card
     const card = await Card.findOne({
         where: { UserID: userID }
