@@ -46,6 +46,8 @@ Tujuan dari pengembangan perangkat lunak ini adalah untuk memudahkan merchant da
 ## Link Sheet Test Case
 
 ## Link Deploy
+Cashier Web-App (Frontend) : https://foodpay-cashier.vercel.app/
+Backend (Server)           : https://foodpayapi.up.railway.app/
 
 ## Link Figma
 
