@@ -58,34 +58,34 @@ Pencatatan dan transaksi
 - UI/UX:
 Hardware: \
 RAM: 8GB \
-Processor: 1.1 GHz Dual-Core Intel Core M \
+Processor: 1.1 GHz Dual-Core Intel Core M 
 
 Software: \
 High-fi design: Figma \
 Graphic editing: Gimp 2.10 \
-Testing: Maze \
+Testing: Maze 
 
-- Backend: \
+- Backend: 
 Hardware: \
 Proc: Intel(R) Celeron(R) CPU N3350 @ 1.10GHz \
-RAM: 4 GB \
+RAM: 4 GB 
 
 Software: \
 OS: Linux Xubuntu 22.04 LTS \
 NodeJS: v18.12.1 LTS \
 Code Editor: VScode v1.73.1 \
 Testing: Postman v9.31.23 \
-Deploy: Railway \
+Deploy: Railway 
 
-- Mobile dev: \
+- Mobile dev: 
 Hardware: \
 Intel Core i7 8565u \
-Ram 8 GB DDR4L 2400 mhz \
+Ram 8 GB DDR4L 2400 mhz 
 
 Software: \
 OS: Linux Ubuntu 22.04 LTS \
 Android Studio Dolphin 2021.3.1 \
-Testing : Samsung Galaxy A31 (Android 12, OneUI 4.1) \
+Testing : Samsung Galaxy A31 (Android 12, OneUI 4.1) 
 
 ## Risiko
 - Penambahan/perubahan fitur mendadak dari stakeholder
@@ -97,11 +97,11 @@ Testing : Samsung Galaxy A31 (Android 12, OneUI 4.1) \
 Metodologi yang digunakan dalam pengembangan perangkat lunak ini adalah waterfall, metode ini memiliki sifat yang bertahap. Tahap awal dimulai dari perencanaan perangkat lunak, lalu desain, Implementasi sistem, testing, dan terakhir delivering sistem ke client maupun pengguna. Setiap tahapan dalam metode waterfall ini tidak bisa dilakukan secara bersamaan, suatu tahapan tidak dapat dikerjakan jika tahapan sebelumnya belum selesai.
 
 ## Use Case
-<img src="https://drive.google.com/file/d/1oNcDLLSXhZb-bKt2G93R_lUDjG5DV0H8">
+<img src="https://drive.google.com/uc?export=view&id=1oNcDLLSXhZb-bKt2G93R_lUDjG5DV0H8" width=50% height=50%>
 
 
 ## Activity Diagram
-<img src="https://drive.google.com/file/d/1T6qetKhPjTsr0Dkoj1KY2yCttPstsrie">
+<img src="https://drive.google.com/uc?export=view&id=1T6qetKhPjTsr0Dkoj1KY2yCttPstsrie" width=50% height=50%>
 
 
 ## ERD
