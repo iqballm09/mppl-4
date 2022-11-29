@@ -25,33 +25,108 @@ Tujuan dari pengembangan perangkat lunak ini adalah untuk memudahkan merchant da
 
 
 ## User Story
+### Merchant
+- Sebagai merchant saya ingin melakukan pencatatan penjualan agar besarnya keuntungan dapat dihitung
+- Sebagai merchant saya ingin mengetahui saldo yang didapat agar besarnya pemasukan tercatat
+### Pembeli
+- Sebagai pembeli saya ingin melakukan transaksi melalui mobile agar proses lebih praktis
+- Sebagai pembeli saya ingin mengisi saldo alat pembayaran dengan mudah agar lebih efektif
+- Sebagai pembeli saya ingin melihat catatan pembelian yang telah dilakukan agar pengeluaran tercatat
+
 
 ## Cakupan
+Sistem mampu menyimpan jumlah saldo dari user dan melakukan pencatatan seluruh transaksi di food court tersebut. Terdapat aplikasi yang dapat digunakan oleh user dan merchant food court. Berikut adalah fitur-fitur dan batasan pengembangan perangkat lunak:	
+### Fitur-fitur yang akan dikembangkan:
+- Top-up saldo
+- Pembayaran
+- Melihat histori transaksi
+- Melihat informasi alat pembayaran
+- Menghubungkan alat pembayaran
+###  Fitur-fitur yang tidak akan dikembangkan:
+- Menambah atau menghapus menu makanan/minuman
+- Fasilitas membuat alat bayar baru
+- Mengirimkan dan menerima saldo ke/dari user lain
+
+
 
 ## Kebutuhan Sistem
+### User
+Pembeli dan merchant
+### Fitur utama
+Pencatatan dan transaksi
+### Lingkungan Pengembangan
+- UI/UX:
+Hardware:
+RAM: 8GB
+Processor: 1.1 GHz Dual-Core Intel Core M
+
+Software:
+High-fi design: Figma
+Graphic editing: Gimp 2.10
+Testing: Maze
+
+- Backend:
+Hardware:
+Proc: Intel(R) Celeron(R) CPU N3350 @ 1.10GHz
+RAM: 4 GB
+
+Software:
+OS: Linux Xubuntu 22.04 LTS
+NodeJS: v18.12.1 LTS
+Code Editor: VScode v1.73.1
+Testing: Postman v9.31.23
+Deploy: Railway
+
+- Mobile dev:
+Hardware:
+Intel Core i7 8565u 
+Ram 8 GB DDR4L 2400 mhz
+
+Software:
+OS: Linux Ubuntu 22.04 LTS
+Android Studio Dolphin 2021.3.1
+Testing : Samsung Galaxy A31 (Android 12, OneUI 4.1)
 
 ## Risiko
+- Penambahan/perubahan fitur mendadak dari stakeholder
+- Keterlambatan dalam pembuatan produk dari jadwal yang ditetapkan
+- Klien tidak komunikatif, sehingga komunikasi berjalan lambat dan menghambat proses pekerjaan
+
 
 ## Metodologi
+Metodologi yang digunakan dalam pengembangan perangkat lunak ini adalah waterfall, metode ini memiliki sifat yang bertahap. Tahap awal dimulai dari perencanaan perangkat lunak, lalu desain, Implementasi sistem, testing, dan terakhir delivering sistem ke client maupun pengguna. Setiap tahapan dalam metode waterfall ini tidak bisa dilakukan secara bersamaan, suatu tahapan tidak dapat dikerjakan jika tahapan sebelumnya belum selesai.
 
 ## Use Case
+<img src="https://drive.google.com/file/d/1oNcDLLSXhZb-bKt2G93R_lUDjG5DV0H8" width=50% height=50%>
+
 
 ## Activity Diagram
+<img src="https://drive.google.com/file/d/1T6qetKhPjTsr0Dkoj1KY2yCttPstsrie" width=50% height=50%>
+
 
 ## ERD
 ![Foodpay ERD](https://github.com/frhnfath/mppl-4/blob/a9ef9ad5c2c12f84b68a094833fbdce0c9e34ad6/foodpay_erd.png)
 
 ## Link Video Demo
+https://drive.google.com/file/d/1Q6iaSp-4a3MGQD30k8qYuUEf_lmMwcqI/view?usp=sharing
 
 ## Link Sheet Test Case
+https://docs.google.com/spreadsheets/d/18d3JeQ-5KjE9FHAaECmo2TDEciWVE6nUIr-fA43FsUo/edit?usp=sharing
 
 ## Link Deploy
+APK                        : https://drive.google.com/drive/folders/1VC0-6K-rISZLlTweZRZoqTKWwoH-Ox81?usp=sharing 
 Cashier Web-App (Frontend) : https://foodpay-cashier.vercel.app/ \
 Backend (Server)           : https://foodpayapi.up.railway.app/
 
 ## Link Figma
+https://www.figma.com/file/ulYsf0NmtXXMzjEr4Cn6xn/MPPL-highfi?node-id=0%3A1&t=YW2DmDC2s1RaYPyV-0
 
 ## Kendala
+- Belum mengetahui jenis dan skenario testing yang sesuai
+- Masih banyak kesibukan dari anggota tim yang mengganggu jalannya proses pengerjaan projek
+- Beberapa task yang diselesaikan melebihi dari jadwal yang ditentukan
+- Sulit dalam mencari responden untuk testing desain aplikasi merchant
+
 
 ## URL API
 ### User
