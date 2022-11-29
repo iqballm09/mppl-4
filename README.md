@@ -56,6 +56,7 @@ Pembeli dan merchant
 Pencatatan dan transaksi
 ### Lingkungan Pengembangan
 - UI/UX: \
+
 Hardware: \
 RAM: 8GB \
 Processor: 1.1 GHz Dual-Core Intel Core M 
@@ -66,6 +67,7 @@ Graphic editing: Gimp 2.10 \
 Testing: Maze 
 
 - Backend: \
+
 Hardware: \
 Proc: Intel(R) Celeron(R) CPU N3350 @ 1.10GHz \
 RAM: 4 GB 
@@ -78,6 +80,7 @@ Testing: Postman v9.31.23 \
 Deploy: Railway 
 
 - Mobile dev: \
+
 Hardware: \
 Intel Core i7 8565u \
 Ram 8 GB DDR4L 2400 mhz 
