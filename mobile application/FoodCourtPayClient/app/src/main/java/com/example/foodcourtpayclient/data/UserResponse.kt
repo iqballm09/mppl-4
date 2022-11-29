@@ -1,5 +1,7 @@
 package com.example.foodcourtpayclient.data
 
+import com.google.gson.annotations.SerializedName
+
 // register response
 data class UserResponse(
     val user: User,
@@ -28,4 +30,28 @@ data class LoginResponse(
     val name: String,
     var id: Int,
     val token: String
+)
+
+// transaction response
+data class TransactionResponse(
+    val payment: PaymentResponse
+)
+
+data class PaymentResponse (
+    val amount: String,
+    val foodcourtName: String,
+    val merchantName: String,
+    val date: String
+)
+
+// list transaction response
+data class ListTransactionResponse(
+    val payments: List<PaymentsResponse>
+)
+
+data class PaymentsResponse (
+    val amount: String,
+    val foodcourtName: String,
+    val merchantName: String,
+    val date: String
 )

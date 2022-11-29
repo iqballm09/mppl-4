@@ -8,9 +8,11 @@ data class UserRequest (
     val pinNumber: String?= null
 )
 
-data class CardRequest(
-    val token: String
-)
+data class TransactionRequest (
+    val amount: String?,
+    val merchantID: String?,
+    val pinNumber: String
+        )
 
 data class  LoginRequest (
     var email: String,

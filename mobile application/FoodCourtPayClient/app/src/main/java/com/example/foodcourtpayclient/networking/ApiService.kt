@@ -18,4 +18,15 @@ interface ApiService {
     fun getCard(
         @Header("auth-token") header: String?
     ): Call <UserResponse>
+
+    @GET("payments/cardID")
+    fun getTransaction(
+        @Header("auth-token") header: String?
+    ): Call <ListTransactionResponse>
+
+    @POST("payments/cardID")
+    fun postTransaction(
+        @Header("auth-token") header: String?,
+        @Body request: TransactionRequest
+    ): Call <TransactionResponse>
 }

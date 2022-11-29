@@ -65,4 +65,5 @@
     <string name="thank_you_and_keep_going">Thank you and keep going</string>
     <string name="download_receipt">Download Receipt</string>
     <string name="transaction">Transaction</string>
+    <string name="logout">Logout</string>
 </resources>

@@ -10,9 +10,10 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/foodcourtapp_color"
+        android:id="@+id/iv_logo"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/foodcourtapp_color"
         android:layout_marginBottom="100dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

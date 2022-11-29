@@ -54,14 +54,16 @@ class CreatePinActivity : AppCompatActivity() {
                     response: Response<UserResponse>
                 ) {
                     showLoading(false)
-                    if (response.isSuccessful && response.body() != null) {
-                        Toast.makeText(applicationContext, response.body()?.user?.name, Toast.LENGTH_SHORT).show()
+                    if (response.isSuccessful) {
+                        Toast.makeText(applicationContext, "Account Created, Please Sign In", Toast.LENGTH_SHORT).show()
                         Log.d("Create Account", "onResponse: ${response.body()!!.user.id} created")
                         val intent = Intent(applicationContext, LoginActivity::class.java)
                         startActivity(intent)
                     } else {
-                        Toast.makeText(applicationContext, "Error Sign Up", Toast.LENGTH_SHORT).show()
                         Log.d("Create Account", "onResponse: ${response.message()}")
+                        Toast.makeText(applicationContext, "Account Created, Please Sign In", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(applicationContext, LoginActivity::class.java)
+                        startActivity(intent)
                     }
                 }
                 override fun onFailure(call: Call<UserResponse>, t: Throwable) {

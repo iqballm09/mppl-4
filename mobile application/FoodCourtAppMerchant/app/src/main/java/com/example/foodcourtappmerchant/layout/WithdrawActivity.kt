@@ -39,4 +39,9 @@ class WithdrawActivity : AppCompatActivity() {
 
         }
     }
+    companion object {
+        const val NOMINAL = "nominal"
+        const val BANK = "bank"
+        const val
+    }
 }

@@ -1,5 +1,7 @@
 package com.example.foodcourtpayclient.layout
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -29,6 +31,7 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.setTitle(R.string.login)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         mUserPreferences = UserPreferences(this)
+        playAnimation()
 
         binding.btnLogin.setOnClickListener {
             val email = binding.edtEmail.text.toString()
@@ -36,6 +39,20 @@ class LoginActivity : AppCompatActivity() {
             val user = LoginRequest(email, password)
             Log.d("Credentials", "onCreate: $email $password")
             postLogin(user)
+        }
+    }
+
+    private fun playAnimation() {
+        val logo = ObjectAnimator.ofFloat(binding.ivLogo, View.ALPHA, 1f).setDuration(500)
+        val email = ObjectAnimator.ofFloat(binding.edtEmail, View.ALPHA, 1f).setDuration(500)
+        val password = ObjectAnimator.ofFloat(binding.edtPassword, View.ALPHA, 1f).setDuration(500)
+        val login = ObjectAnimator.ofFloat(binding.btnLogin, View.ALPHA, 1f).setDuration(500)
+        val forgot = ObjectAnimator.ofFloat(binding.tvForgotPassword, View.ALPHA, 1f).setDuration(500)
+        val noAccount = ObjectAnimator.ofFloat(binding.tvNoAccount, View.ALPHA, 1f).setDuration(500)
+
+        AnimatorSet().apply {
+            playSequentially(logo, email, password, login, forgot, noAccount)
+            start()
         }
     }
 
@@ -52,11 +69,12 @@ class LoginActivity : AppCompatActivity() {
                     showLoading(false)
                     if (response.isSuccessful && response.body() != null) {
                         userPreferences.setUser(response.body()!!.token, response.body()!!.name, response.body()!!.id)
-                        Toast.makeText(applicationContext, response.body()?.token, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, "Welcome to FoodCourt Pay!", Toast.LENGTH_SHORT).show()
                         Log.d("Token", "onResponse: ${response.body()?.token} ${response.body()?.name} ${response.body()?.id}")
                         moveActivity()
                     } else {
-                        Toast.makeText(applicationContext, "Error Sign In", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, response.message()
+                            , Toast.LENGTH_SHORT).show()
                         Log.d("LoginActivity", "onResponse: ${response.message()}")
                     }
                 }
@@ -78,5 +96,4 @@ class LoginActivity : AppCompatActivity() {
         if (state) binding.progressBar.visibility = View.VISIBLE
         else binding.progressBar.visibility = View.GONE
     }
-
 }

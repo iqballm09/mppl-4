@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FoodCourt Pay Client</string>
+    <string name="app_name">FoodCourt Pay</string>
     <string name="notification">Notification</string>
     <string name="welcome">Welcome</string>
     <string name="welcome2">Eat and Drink\nHowever You Like</string>

@@ -1,18 +1,20 @@
 package com.example.foodcourtpayclient.layout
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.camera.core.CameraSelector
-import androidx.camera.core.Preview
-import androidx.camera.lifecycle.ProcessCameraProvider
-import androidx.core.content.ContextCompat
+import com.budiyev.android.codescanner.AutoFocusMode
+import com.budiyev.android.codescanner.CodeScanner
+import com.budiyev.android.codescanner.DecodeCallback
+import com.budiyev.android.codescanner.ErrorCallback
+import com.budiyev.android.codescanner.ScanMode
 import com.example.foodcourtpayclient.R
 import com.example.foodcourtpayclient.databinding.ActivityPayCameraBinding
 
 class PayCameraActivity : AppCompatActivity() {
     private lateinit var binding:ActivityPayCameraBinding
-    private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+    private lateinit var codeScanner: CodeScanner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,35 +22,48 @@ class PayCameraActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.setTitle(R.string.scan)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        // start camera
-        startCamera()
-    }
 
-    private fun startCamera() {
-        val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
+        codeScanner = CodeScanner(this, binding.viewFinder)
 
-        cameraProviderFuture.addListener({
-            val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
-            val preview = Preview.Builder()
-                .build()
-                .also {
-                    it.setSurfaceProvider(binding.viewFinder.surfaceProvider)
-                }
+        // parameters (default values)
+        codeScanner.camera = CodeScanner.CAMERA_BACK
+        codeScanner.formats = CodeScanner.ALL_FORMATS
 
-            try {
-                cameraProvider.unbindAll()
-                cameraProvider.bindToLifecycle(
-                    this,
-                    cameraSelector,
-                    preview
-                )
-            } catch (e: Exception) {
-                Toast.makeText(
-                    this@PayCameraActivity,"Failed to Load Camera", Toast.LENGTH_SHORT
-                ).show()
+        codeScanner.autoFocusMode = AutoFocusMode.SAFE
+        codeScanner.scanMode = ScanMode.SINGLE
+        codeScanner.isAutoFocusEnabled = true
+        codeScanner.isFlashEnabled = false
+
+        // callbacks
+        codeScanner.decodeCallback = DecodeCallback {
+            runOnUiThread {
+                Toast.makeText(this, "Scan Result: ${it.text}", Toast.LENGTH_LONG).show()
+                if (it.text != null) {
+                    val moveWithDataIntent = Intent(this@PayCameraActivity, PaymentActivity::class.java)
+                    moveWithDataIntent.putExtra(PaymentActivity.EXTRA_MERCHANT, it.toString())
+                    startActivity(moveWithDataIntent)
             }
-        }, ContextCompat.getMainExecutor(this))
+        }
+        codeScanner.errorCallback = ErrorCallback {
+            runOnUiThread {
+                Toast.makeText(this, "Camera initialization error: ${it.message}",
+                    Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+
+        binding.viewFinder.setOnClickListener {
+            codeScanner.startPreview()
+        }
     }
 
+    override fun onResume() {
+        super.onResume()
+        codeScanner.startPreview()
+    }
 
+    override fun onPause() {
+        codeScanner.releaseResources()
+        super.onPause()
+    }
 }

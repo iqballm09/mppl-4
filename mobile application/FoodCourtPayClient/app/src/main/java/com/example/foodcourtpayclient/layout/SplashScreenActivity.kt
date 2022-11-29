@@ -1,4 +1,4 @@
-package com.example.foodcourtpayclient
+package com.example.foodcourtpayclient.layout
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,8 +7,6 @@ import android.os.Handler
 import android.util.Log
 import com.example.foodcourtpayclient.data.UserModel
 import com.example.foodcourtpayclient.databinding.ActivitySplashScreenBinding
-import com.example.foodcourtpayclient.layout.MainActivity
-import com.example.foodcourtpayclient.layout.StartActivity
 import com.example.foodcourtpayclient.session.UserPreferences
 
 class SplashScreenActivity : AppCompatActivity() {

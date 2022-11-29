@@ -1,6 +1,7 @@
 package com.example.foodcourtpayclient.layout
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
@@ -12,8 +13,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.foodcourtpayclient.ListTransactionAdapter
 import com.example.foodcourtpayclient.R
-import com.example.foodcourtpayclient.data.CardResponse
+import com.example.foodcourtpayclient.data.ListTransactionResponse
 import com.example.foodcourtpayclient.data.UserResponse
 import com.example.foodcourtpayclient.databinding.ActivityMainBinding
 import com.example.foodcourtpayclient.networking.ApiConfig
@@ -40,6 +44,8 @@ class MainActivity : AppCompatActivity() {
         val user = mUserPreferences.getUser()
         Log.d("user", "onCreate: ${user.id}")
         setSaldo()
+        setTransactionList()
+        //showRecyclerList()
 
         binding.tvName.text = user.name
 
@@ -67,15 +73,47 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    private fun setTransactionList() {
+        showLoading(true)
+        val recyclerView = findViewById<RecyclerView>(R.id.rv_transaction)
+        val retrofit = ApiConfig.buildService(ApiService::class.java)
+        retrofit.getTransaction(mUserPreferences.getUser().token).enqueue(
+            object : Callback<ListTransactionResponse> {
+                override fun onResponse(
+                    call: Call<ListTransactionResponse>,
+                    response: Response<ListTransactionResponse>
+                ) {
+                    if (response.isSuccessful && response.body() != null) {
+                        Log.d("List Success", response.body().toString())
+                        recyclerView.apply {
+                            layoutManager = LinearLayoutManager(this@MainActivity)
+                            adapter = ListTransactionAdapter( response.body()!!.payments.asReversed())
+                        }
+
+                        showLoading(false)
+                        }
+                    }
+
+                override fun onFailure(call: Call<ListTransactionResponse>, t: Throwable) {
+                    t.printStackTrace()
+                    Log.d("Failure :", t.message!!)
+                }
+            }
+        )
+    }
+
     private fun setSaldo() {
+        showLoadingCard(true)
         val retrofit = ApiConfig.buildService(ApiService::class.java)
         retrofit.getCard(mUserPreferences.getUser().token).enqueue(
             object: Callback<UserResponse> {
+                @SuppressLint("SetTextI18n")
                 override fun onResponse(
                     call: Call<UserResponse>,
                     response: Response<UserResponse>
                 ) {
                     if (response.isSuccessful && response.body() != null) {
+                        showLoadingCard(false)
                         binding.tvCardName.text = response.body()!!.card.name
                         binding.saldo.text = " " + response.body()!!.card.saldo.toString()
                         Log.d("Card Name", "onResponse: ${response.body()!!.card.name}")
@@ -85,7 +123,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-                    Log.e("Saldo", "onFailure: ${t.message}", )
+                    Log.e("Saldo", "onFailure: ${t.message}" )
                 }
             }
         )
@@ -128,6 +166,14 @@ class MainActivity : AppCompatActivity() {
         ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
     }
 
+    private fun showLoadingCard(isLoading: Boolean) {
+        if (isLoading) {
+            binding.progressBarCard.visibility = View.VISIBLE
+        } else {
+            binding.progressBarCard.visibility = View.GONE
+        }
+    }
+
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {
             binding.progressBar.visibility = View.VISIBLE
@@ -135,6 +181,18 @@ class MainActivity : AppCompatActivity() {
             binding.progressBar.visibility = View.GONE
         }
     }
+
+/*    private fun showRecyclerList() {
+        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
+            MainViewModel::class.java)
+        viewModel.setTransactionList(mUserPreferences.getUser().token)
+        binding.apply {
+            rvTransaction.layoutManager = LinearLayoutManager(this@MainActivity)
+            rvTransaction.setHasFixedSize(true)
+            rvTransaction.adapter = transactionAdapter
+        }
+        viewModel.getTransaction()
+    } */
 
     companion object {
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
