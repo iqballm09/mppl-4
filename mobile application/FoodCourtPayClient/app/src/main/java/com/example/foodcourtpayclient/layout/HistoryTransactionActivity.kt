@@ -6,7 +6,7 @@ import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.foodcourtpayclient.ListTransactionAdapter
+import com.example.foodcourtpayclient.adapter.ListTransactionAdapter
 import com.example.foodcourtpayclient.R
 import com.example.foodcourtpayclient.data.ListTransactionResponse
 import com.example.foodcourtpayclient.databinding.ActivityHistoryTransactionBinding

@@ -37,7 +37,7 @@ class PayCameraActivity : AppCompatActivity() {
         // callbacks
         codeScanner.decodeCallback = DecodeCallback {
             runOnUiThread {
-                Toast.makeText(this, "Scan Result: ${it.text}", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Please Continue Payment", Toast.LENGTH_LONG).show()
                 if (it.text != null) {
                     val moveWithDataIntent = Intent(this@PayCameraActivity, PaymentActivity::class.java)
                     moveWithDataIntent.putExtra(PaymentActivity.EXTRA_MERCHANT, it.toString())

@@ -15,7 +15,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.foodcourtpayclient.ListTransactionAdapter
+import com.example.foodcourtpayclient.adapter.ListTransactionAdapter
 import com.example.foodcourtpayclient.R
 import com.example.foodcourtpayclient.data.ListTransactionResponse
 import com.example.foodcourtpayclient.data.UserResponse
@@ -45,7 +45,6 @@ class MainActivity : AppCompatActivity() {
         Log.d("user", "onCreate: ${user.id}")
         setSaldo()
         setTransactionList()
-        //showRecyclerList()
 
         binding.tvName.text = user.name
 
@@ -181,18 +180,6 @@ class MainActivity : AppCompatActivity() {
             binding.progressBar.visibility = View.GONE
         }
     }
-
-/*    private fun showRecyclerList() {
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
-            MainViewModel::class.java)
-        viewModel.setTransactionList(mUserPreferences.getUser().token)
-        binding.apply {
-            rvTransaction.layoutManager = LinearLayoutManager(this@MainActivity)
-            rvTransaction.setHasFixedSize(true)
-            rvTransaction.adapter = transactionAdapter
-        }
-        viewModel.getTransaction()
-    } */
 
     companion object {
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)

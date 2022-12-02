@@ -1,5 +1,7 @@
 package com.example.foodcourtappmerchant.layout
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -30,6 +32,8 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         mUserPreferences = UserPreferences(this)
 
+        playAnimation()
+
         binding.btnLogin.setOnClickListener {
             val email = binding.edtEmail.text.toString()
             val password = binding.edtPassword.text.toString()
@@ -51,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
                     showLoading(false)
                     if (response.isSuccessful && response.body() != null) {
                         userPreferences.setUser(response.body()!!.token, response.body()!!.name, response.body()!!.id)
-                        Toast.makeText(applicationContext, response.body()?.token, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, "Welcome, Merchant!", Toast.LENGTH_SHORT).show()
                         Log.d("token", "onResponse: ${response.body()?.token} ${response.body()?.name} ${response.body()?.id}")
                         moveActivity()
                     } else {
@@ -65,6 +69,19 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         )
+    }
+
+    private fun playAnimation() {
+        val logo = ObjectAnimator.ofFloat(binding.ivLogo, View.ALPHA, 1f).setDuration(500)
+        val email = ObjectAnimator.ofFloat(binding.edtEmail, View.ALPHA, 1f).setDuration(500)
+        val password = ObjectAnimator.ofFloat(binding.edtPassword, View.ALPHA, 1f).setDuration(500)
+        val login = ObjectAnimator.ofFloat(binding.btnLogin, View.ALPHA, 1f).setDuration(500)
+        val forgot = ObjectAnimator.ofFloat(binding.tvForgotPassword, View.ALPHA, 1f).setDuration(500)
+
+        AnimatorSet().apply {
+            playSequentially(logo, email, password, login, forgot)
+            start()
+        }
     }
 
     private fun moveActivity() {

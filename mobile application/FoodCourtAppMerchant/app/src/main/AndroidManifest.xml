@@ -8,9 +8,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/foodcourtapp_white"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/foodcourtapp_white"
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodCourtAppMerchant"
         tools:targetApi="31">
@@ -28,6 +28,7 @@
         </activity>
         <activity
             android:name=".layout.TransactionHistoryActivity"
+            android:parentActivityName=".layout.MainActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -58,6 +59,7 @@
         </activity>
         <activity
             android:name=".layout.WithdrawHistoryActivity"
+            android:parentActivityName=".layout.WithdrawActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -118,5 +120,4 @@
                 android:value="" />
         </activity>
     </application>
-
 </manifest>

@@ -36,7 +36,7 @@ class WithdrawMenuActivity : AppCompatActivity() {
         }
 
         binding.tvHistory.setOnClickListener {
-            val intent = Intent(this, TransactionHistoryActivity::class.java)
+            val intent = Intent(this, WithdrawHistoryActivity::class.java)
             startActivity(intent)
         }
     }
@@ -51,7 +51,7 @@ class WithdrawMenuActivity : AppCompatActivity() {
                 ) {
                     if (response.isSuccessful && response.body() != null) {
                         binding.saldo.text = " " + response.body()!!.merchant.income.toString()
-                        binding.cardName.text = response.body()!!.merchant.foodCourtName.toString()
+                        binding.cardName.text = response.body()!!.merchant.name.toString()
                     } else {
                         Toast.makeText(applicationContext, "Unable to load data", Toast.LENGTH_SHORT).show()
                     }

@@ -12,3 +12,10 @@ data class LoginRequest (
     var email: String,
     var password: String
 )
+
+data class WithdrawRequest (
+    val amount: String?,
+    val method: String?,
+    val accountNumber: String?,
+    val pinNumber: String
+)

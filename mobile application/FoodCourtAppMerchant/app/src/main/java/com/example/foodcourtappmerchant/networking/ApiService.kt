@@ -1,8 +1,6 @@
 package com.example.foodcourtappmerchant.networking
 
-import com.example.foodcourtappmerchant.data.LoginRequest
-import com.example.foodcourtappmerchant.data.LoginResponse
-import com.example.foodcourtappmerchant.data.UserResponse
+import com.example.foodcourtappmerchant.data.*
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -17,4 +15,20 @@ interface ApiService {
     fun getCard(
         @Header("auth-token") header: String?
     ): Call<UserResponse>
+
+    @GET("merchants/id/transactions")
+    fun getTransactions(
+        @Header("auth-token") header: String?
+    ): Call<ListTransactionResponse>
+
+    @GET("withdraws/merchantID")
+    fun getWithdraws(
+        @Header("auth-token") header: String?
+    ): Call<ListWithdrawsRespose>
+
+    @POST("withdraws/merchantID")
+    fun postWithdraw(
+        @Header("auth-token") header: String?,
+        @Body request: WithdrawRequest
+    ): Call <WithdrawResponseParent>
 }

@@ -5,8 +5,13 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.foodcourtappmerchant.R
+import com.example.foodcourtappmerchant.adapter.ListTransactionAdapter
+import com.example.foodcourtappmerchant.data.ListTransactionResponse
 import com.example.foodcourtappmerchant.data.UserResponse
 import com.example.foodcourtappmerchant.databinding.ActivityMainBinding
 import com.example.foodcourtappmerchant.networking.ApiConfig
@@ -26,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         mUserPreferences = UserPreferences(this)
         setData()
+        setTransactionList()
 
         binding.btnWithdraw.setOnClickListener {
             val intent = Intent(this, WithdrawMenuActivity::class.java)
@@ -39,6 +45,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setData() {
+        showLoadingCard(true)
         val retrofit = ApiConfig.buildService(ApiService::class.java)
         retrofit.getCard(mUserPreferences.getUser().token).enqueue(
             object : Callback<UserResponse> {
@@ -47,10 +54,10 @@ class MainActivity : AppCompatActivity() {
                     response: Response<UserResponse>
                 ) {
                     if (response.isSuccessful && response.body() != null) {
+                        showLoadingCard(false)
                         binding.tvName.text = response.body()!!.merchant.name.toString()
                         binding.saldo.text = " " + response.body()!!.merchant.income.toString()
-                        binding.tvBusiness.text = response.body()!!.merchant.foodCourtName.toString()
-                        binding.tvLocation.text = response.body()!!.merchant.merchantName.toString()
+                        binding.tvBusiness.text = response.body()!!.merchant.name.toString()
                     } else {
                         Toast.makeText(applicationContext, "Unable to load data", Toast.LENGTH_SHORT).show()
                     }
@@ -58,7 +65,6 @@ class MainActivity : AppCompatActivity() {
                 override fun onFailure(call: Call<UserResponse>, t: Throwable) {
                     Log.e("Data", "onFailure: ${t.message}")
                 }
-
             }
         )
     }
@@ -84,6 +90,50 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             else -> true
+        }
+    }
+
+    private fun setTransactionList() {
+        showLoading(true)
+        val recyclerView = findViewById<RecyclerView>(R.id.rv_transaction)
+        val retrofit = ApiConfig.buildService(ApiService::class.java)
+        retrofit.getTransactions(mUserPreferences.getUser().token).enqueue(
+            object : Callback<ListTransactionResponse> {
+                override fun onResponse(
+                    call: Call<ListTransactionResponse>,
+                    response: Response<ListTransactionResponse>
+                ) {
+                    if (response.isSuccessful && response.body() != null) {
+                        Log.d("List Success", response.body().toString())
+                        recyclerView.apply {
+                            layoutManager = LinearLayoutManager(this@MainActivity)
+                            adapter = ListTransactionAdapter( response.body()!!.payments.asReversed())
+                        }
+                        showLoading(false)
+                    }
+                }
+
+                override fun onFailure(call: Call<ListTransactionResponse>, t: Throwable) {
+                    t.printStackTrace()
+                    Log.d("Failure :", t.message!!)
+                }
+            }
+        )
+    }
+
+    private fun showLoading(state: Boolean) {
+        if (state) {
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.progressBar.visibility = View.GONE
+        }
+    }
+
+    private fun showLoadingCard(state: Boolean) {
+        if (state) {
+            binding.progressBarCard.visibility = View.VISIBLE
+        } else {
+            binding.progressBarCard.visibility = View.GONE
         }
     }
 }
