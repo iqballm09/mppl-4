@@ -8,7 +8,7 @@ dotenv.config();
 
 const createCashierTopUp = async (req, res) => {
     // Get payload
-    const merchantID = req.merchant.id;
+    const merchantID = req.body.merchantID;
     // Get merchant by id
     const merchant = await Merchant.findOne({
         where: { id: merchantID }

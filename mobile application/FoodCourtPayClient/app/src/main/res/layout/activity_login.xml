@@ -12,12 +12,14 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/iv_logo"
+        android:alpha="0"
         android:src="@drawable/foodcourtapp_color" />
 
     <EditText
         app:layout_constraintTop_toBottomOf="@id/iv_logo"
         android:hint="@string/email"
         android:id="@+id/edt_email"
+        android:alpha="0"
         android:background="@drawable/custom_edt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,6 +32,7 @@
         app:layout_constraintTop_toBottomOf="@id/edt_email"
         android:hint="@string/password"
         android:id="@+id/edt_password"
+        android:alpha="0"
         android:background="@drawable/custom_edt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,6 +48,7 @@
         android:background="@drawable/btn_radius"
         android:backgroundTint="@color/primary_red"
         android:text="@string/login"
+        android:alpha="0"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textStyle="bold"
@@ -57,6 +61,7 @@
         android:id="@+id/tv_forgot_password"
         android:textColor="@color/primary_red"
         android:textStyle="bold"
+        android:alpha="0"
         android:text="@string/forgot_password"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,6 +76,7 @@
         android:textColor="@color/primary_red"
         android:textStyle="bold"
         android:text="@string/no_account"
+        android:alpha="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="14dp"
@@ -81,6 +87,9 @@
         android:id="@+id/progress_bar"
         android:visibility="gone"
         style="@style/progress_bar_style"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

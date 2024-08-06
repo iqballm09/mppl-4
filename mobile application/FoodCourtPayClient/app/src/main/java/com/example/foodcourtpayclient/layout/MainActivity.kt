@@ -1,31 +1,52 @@
 package com.example.foodcourtpayclient.layout
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.foodcourtpayclient.adapter.ListTransactionAdapter
 import com.example.foodcourtpayclient.R
+import com.example.foodcourtpayclient.data.ListTransactionResponse
+import com.example.foodcourtpayclient.data.UserResponse
 import com.example.foodcourtpayclient.databinding.ActivityMainBinding
+import com.example.foodcourtpayclient.networking.ApiConfig
+import com.example.foodcourtpayclient.networking.ApiService
+import com.example.foodcourtpayclient.session.UserPreferences
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var mUserPreferences: UserPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        mUserPreferences = UserPreferences(this)
         setContentView(binding.root)
 
         if (!allPermissionsGranted()) {
             ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
         }
+
+        val user = mUserPreferences.getUser()
+        Log.d("user", "onCreate: ${user.id}")
+        setSaldo()
+        setTransactionList()
+
+        binding.tvName.text = user.name
 
         binding.rvTransaction.setHasFixedSize(true)
 
@@ -51,6 +72,62 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    private fun setTransactionList() {
+        showLoading(true)
+        val recyclerView = findViewById<RecyclerView>(R.id.rv_transaction)
+        val retrofit = ApiConfig.buildService(ApiService::class.java)
+        retrofit.getTransaction(mUserPreferences.getUser().token).enqueue(
+            object : Callback<ListTransactionResponse> {
+                override fun onResponse(
+                    call: Call<ListTransactionResponse>,
+                    response: Response<ListTransactionResponse>
+                ) {
+                    if (response.isSuccessful && response.body() != null) {
+                        Log.d("List Success", response.body().toString())
+                        recyclerView.apply {
+                            layoutManager = LinearLayoutManager(this@MainActivity)
+                            adapter = ListTransactionAdapter( response.body()!!.payments.asReversed())
+                        }
+
+                        showLoading(false)
+                        }
+                    }
+
+                override fun onFailure(call: Call<ListTransactionResponse>, t: Throwable) {
+                    t.printStackTrace()
+                    Log.d("Failure :", t.message!!)
+                }
+            }
+        )
+    }
+
+    private fun setSaldo() {
+        showLoadingCard(true)
+        val retrofit = ApiConfig.buildService(ApiService::class.java)
+        retrofit.getCard(mUserPreferences.getUser().token).enqueue(
+            object: Callback<UserResponse> {
+                @SuppressLint("SetTextI18n")
+                override fun onResponse(
+                    call: Call<UserResponse>,
+                    response: Response<UserResponse>
+                ) {
+                    if (response.isSuccessful && response.body() != null) {
+                        showLoadingCard(false)
+                        binding.tvCardName.text = response.body()!!.card.name
+                        binding.saldo.text = " " + response.body()!!.card.saldo.toString()
+                        Log.d("Card Name", "onResponse: ${response.body()!!.card.name}")
+                        Log.d("Saldo", "onResponse: ${response.body()!!.card.saldo}")
+                    } else {
+                        Toast.makeText(applicationContext, "Unable to load Saldo", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                    Log.e("Saldo", "onFailure: ${t.message}" )
+                }
+            }
+        )
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.notificationMenu -> {
@@ -58,12 +135,18 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 true
             }
+            R.id.logoutMenu -> {
+                mUserPreferences.deleteUser()
+                val intent = Intent(this, StartActivity::class.java)
+                startActivity(intent)
+                finish()
+                true
+            }
             else -> true
         }
     }
 
     // camera accessibility
-
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -80,6 +163,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun showLoadingCard(isLoading: Boolean) {
+        if (isLoading) {
+            binding.progressBarCard.visibility = View.VISIBLE
+        } else {
+            binding.progressBarCard.visibility = View.GONE
+        }
     }
 
     private fun showLoading(isLoading: Boolean) {

@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_card"
-        android:text="@string/card"
+        android:text="@string/receipt_bill"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,14 +34,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/card_name"
-                android:text="@string/kartu_makan_jkt"
+                android:text="@string/card"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:textColor="@color/white"
                 android:fontFamily="@font/poppins_regular"
                 android:textStyle="bold"
                 android:textSize="16sp"
-                android:layout_marginTop="33dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginStart="35dp" />
 
             <TextView
@@ -69,20 +69,6 @@
                 app:layout_constraintTop_toBottomOf="@id/card_name"
                 app:layout_constraintStart_toEndOf="@id/tv_rp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tv_history"
-                android:text="@string/see_history"
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintTop_toBottomOf="@id/tv_rp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="34dp"
-                android:layout_marginStart="35dp"/>
-
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -109,7 +95,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_receipt"
-        android:text="@string/receipt"
+        android:text="@string/bill_total"
         android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="@color/black"
@@ -117,95 +103,34 @@
         app:layout_constraintTop_toBottomOf="@id/separator"
         android:layout_marginTop="14dp"/>
 
-    <TableLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/table_receipt"
-        android:layout_marginTop="18dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_receipt" >
-        <TableRow>
-            <TextView
-                android:text="@string/pesanan"
-                style="@style/tv_table_receipt"
-                android:gravity="start"
-                android:layout_weight="3"
-                android:textStyle="bold" />
-            <TextView
-                android:text="@string/jumlah"
-                style="@style/tv_table_receipt"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textStyle="bold" />
-            <TextView
-                android:text="@string/harga_total"
-                style="@style/tv_table_receipt"
-                android:layout_weight="2"
-                android:gravity="end"
-                android:textStyle="bold" />
-        </TableRow>
+        android:id="@+id/tv_desc_nominal"
+        style="@style/text_style"
+        android:text="@string/enter_nominal"
+        app:layout_constraintTop_toBottomOf="@id/tv_receipt"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/darker_grey"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="5dp" />
-
-        <TableRow>
-            <TextView
-                android:text="@string/food"
-                style="@style/tv_table_receipt"
-                android:gravity="start"
-                android:layout_weight="3"
-                android:textStyle="bold" />
-            <TextView
-                android:text="@string/x"
-                style="@style/tv_table_receipt"
-                android:layout_weight="1"
-                android:gravity="center"/>
-            <TextView
-                android:text="@string/harga_total"
-                style="@style/tv_table_receipt"
-                android:layout_weight="2"
-                android:gravity="end"/>
-        </TableRow>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/darker_grey"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="5dp" />
-
-        <TableRow>
-            <TextView
-                android:text="@string/total"
-                style="@style/tv_table_receipt"
-                android:gravity="start"
-                android:layout_weight="3"
-                android:textStyle="bold" />
-            <TextView
-                android:text="@string/jumlah"
-                style="@style/tv_table_receipt"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textStyle="bold" />
-            <TextView
-                android:text="@string/harga_total"
-                style="@style/tv_table_receipt"
-                android:layout_weight="2"
-                android:gravity="end"
-                android:id="@+id/tv_total_price"
-                android:textStyle="bold" />
-        </TableRow>
-    </TableLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/edt_amount"
+        android:background="@drawable/custom_edt"
+        app:layout_constraintTop_toBottomOf="@id/tv_desc_nominal"
+        android:layout_marginTop="16dp"
+        android:hint="@string/rp"
+        android:gravity="center"
+        android:inputType="number" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btn_proceed"
         android:layout_marginTop="32dp"
-        app:layout_constraintTop_toBottomOf="@id/table_receipt"
+        app:layout_constraintTop_toBottomOf="@id/edt_amount"
         android:text="@string/proceed_to_pay"
         android:textAllCaps="false"
         android:textStyle="bold"

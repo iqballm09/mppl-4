@@ -66,19 +66,6 @@
                 android:textSize="16sp"
                 app:layout_constraintTop_toBottomOf="@id/tv_bank_name"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginBottom="34dp"
-                android:layout_marginStart="35dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tv_date"
-                android:text="@string/dd_mm_yyyy"
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintTop_toBottomOf="@id/tv_bank_account"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginBottom="34dp"
                 android:layout_marginStart="35dp"/>
@@ -154,6 +141,7 @@
                 android:textStyle="bold" />
             <TextView
                 android:text="@string/saldo_value"
+                android:id="@+id/tv_amount_withdraw"
                 style="@style/tv_table_receipt"
                 android:layout_weight="2"
                 android:gravity="end"/>
@@ -168,6 +156,7 @@
                 android:textStyle="bold" />
             <TextView
                 android:text="@string/saldo_value"
+                android:id="@+id/tv_fees"
                 style="@style/tv_table_receipt"
                 android:layout_weight="2"
                 android:gravity="end"/>

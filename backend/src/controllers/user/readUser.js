@@ -16,7 +16,7 @@ const getAllUsers = async (req, res) => {
 }
 
 // Get user by email --> Login
-const getUserByEmail = async (req, res) => {
+const getUserForLogin = async (req, res) => {
     // Check if email is already exists
     const user = await User.findOne({
         where: { email: req.body.email }
@@ -41,8 +41,18 @@ const getUserById = async (req, res) => {
     return res.status(200).json({ user });
 }
 
+// Get user by email
+const getUserByEmail = async (req, res) => {
+    // Get user by email
+    const user = await User.findOne({
+        where: { email: req.body.email }
+    });
+    return res.status(200).json({ user });
+}
+
 module.exports = {
     getAllUsers,
-    getUserByEmail,
-    getUserById
+    getUserForLogin,
+    getUserById,
+    getUserByEmail
 }

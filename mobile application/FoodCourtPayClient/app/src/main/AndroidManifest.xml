@@ -12,24 +12,42 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/foodcourtapp_color"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodCourtPayClient"
         tools:targetApi="31">
+        <activity
+            android:name=".layout.SplashScreenActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".layout.PaymentActivity2"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".layout.MainActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
-                android:value=""/>
+                android:value="" />
         </activity>
         <activity
             android:name=".layout.CreatePinActivity"
-            android:parentActivityName=".layout.SignupActivity"
-            android:exported="false">
+            android:exported="false"
+            android:parentActivityName=".layout.SignupActivity">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -44,8 +62,8 @@
         </activity>
         <activity
             android:name=".layout.HistoryTransactionActivity"
-            android:parentActivityName=".layout.MainActivity"
-            android:exported="false">
+            android:exported="false"
+            android:parentActivityName=".layout.MainActivity">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -115,16 +133,11 @@
         </activity>
         <activity
             android:name=".layout.StartActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
     </application>
+
 </manifest>

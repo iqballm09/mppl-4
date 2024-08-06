@@ -18,13 +18,13 @@ const getCard = async (req, res) => {
     // Get payload
     const userID = req.user.id;
     // Read card
-    const card = await Card.findOne({ 
+    const card = await Card.findOne({
         where: {
             UserID: userID
         }
     });
     // Check if card already exists
-    if (!card) return res.status(404).send(`Card with id: ${req.body.id} and UserID: ${userID} is not found`);
+    if (!card) return res.status(404).send(`Card with UserID: ${userID} is not found`);
     return res.status(200).json({ card });
 }
 

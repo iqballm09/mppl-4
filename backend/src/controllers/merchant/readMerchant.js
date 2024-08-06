@@ -16,7 +16,7 @@ const getAllMerchants = async (req, res) => {
 }
 
 // Get merchant by email --> Login
-const getMerchantByEmail = async (req, res) => {
+const getMerchantForLogin = async (req, res) => {
     // Check if email is already exists
     const merchant = await Merchant.findOne({
         where: { email: req.body.email }
@@ -38,12 +38,12 @@ const getMerchantById = async (req, res) => {
     const merchant = await Merchant.findOne({
         where: { id: merchantID }
     });
-    if (!merchant) return res.status(404).send(`Merchant with id: ${ merchantID } is not found`);
+    if (!merchant) return res.status(404).send(`Merchant with id: ${merchantID} is not found`);
     return res.status(200).json({ merchant });
 }
 
 module.exports = {
     getAllMerchants,
-    getMerchantByEmail,
+    getMerchantForLogin,
     getMerchantById
 }

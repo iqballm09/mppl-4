@@ -39,7 +39,7 @@
         android:text="@string/exclamation"
         app:layout_constraintTop_toTopOf="parent"
         style="@style/text_style"
-        android:textSize="12sp"
+        android:textSize="16sp"
         android:layout_marginTop="4dp"/>
 
     <androidx.cardview.widget.CardView
@@ -52,6 +52,7 @@
         app:cardCornerRadius="25dp" >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:background="@drawable/card"
             android:layout_height="match_parent">
             <TextView
                 android:layout_width="wrap_content"
@@ -162,6 +163,17 @@
                         android:textSize="16sp" />
                 </LinearLayout>
             </LinearLayout>
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/progress_bar_card"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -193,8 +205,12 @@
     <ProgressBar
         android:id="@+id/progress_bar"
         android:visibility="gone"
-        style="@style/progress_bar_style"
-        tools:ignore="MissingConstraints" />
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

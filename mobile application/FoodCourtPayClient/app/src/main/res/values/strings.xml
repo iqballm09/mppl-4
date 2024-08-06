@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FoodCourt Pay Client</string>
+    <string name="app_name">FoodCourt Pay</string>
     <string name="notification">Notification</string>
     <string name="welcome">Welcome</string>
     <string name="welcome2">Eat and Drink\nHowever You Like</string>
@@ -69,4 +69,12 @@
     <string name="bank4">4. Enter your top up amount</string>
     <string name="bank5">5. Enter your pin and complete your transaction</string>
     <string name="wallet">wallet</string>
+    <string name="receipt_bill">Receipt Bill</string>
+    <string name="bill_total">Bill Total</string>
+    <string name="enter_nominal">Enter the total nominal to be paid</string>
+    <string name="billing">Billing</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="confirmation2">Make sure you\'ve entered the correct nominal</string>
+    <string name="order">Order</string>
+    <string name="logout">Logout</string>
 </resources>

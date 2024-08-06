@@ -7,17 +7,17 @@ const Merchant = require("../../models/Merchant");
 dotenv.config();
 
 // Create payment
-const createPayment = async(req, res) => {
-    // Get payload
+const createPayment = async (req, res) => {
+    // Get user id
     const userID = req.user.id;
     // Read card
-    const card = await Card.findOne({ 
+    const card = await Card.findOne({
         where: { UserID: userID }
     });
-    if (!card) return res.status(404).send(`Card with UserID: ${ userID } is not found`);    
+    if (!card) return res.status(404).send(`Card with UserID: ${userID} is not found`);
     // Get merchant by id
     const merchant = await Merchant.findOne({
-        where: { id: req.body.id }
+        where: { id: req.body.merchantID }
     });
     // Proceed to payment
     if (req.body.pinNumber) {
@@ -27,22 +27,19 @@ const createPayment = async(req, res) => {
         // Update saldo on card
         const updatedSaldo = card.saldo - req.body.amount;
         if (updatedSaldo < 0) return res.status(200).send(`Card saldo with CardID: ${card.id} is not enough`);
-        card.set({ 
+        card.set({
             saldo: updatedSaldo
         });
         // Update income of merchant
         const updatedIncome = merchant.income + req.body.amount;
         merchant.set({
-            foodCourtName: req.body.foodcourtName,
-            merchantName: req.body.merchantName,
             income: updatedIncome
         });
         // Create payment
         const payment = await Payment.create({
+            merchantID: merchant.id,
             CardID: card.id,
             amount: req.body.amount,
-            foodcourtName: req.body.foodcourtName,
-            merchantName: req.body.merchantName,
             date: new Date().toLocaleDateString()
         });
         await payment.save();

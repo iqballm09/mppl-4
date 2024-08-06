@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    tools:context=".layout.PaymentActivity2">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_confirmation"
+        style="@style/text_style"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="@string/confirmation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_confirmation2"
+        style="@style/text_style"
+        android:textSize="16sp"
+        android:text="@string/confirmation2"
+        app:layout_constraintTop_toBottomOf="@id/tv_confirmation"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_confirmation2"
+        app:cardCornerRadius="25dp"
+        android:layout_marginTop="18dp"
+        android:id="@+id/cardMenu"
+        android:backgroundTint="@color/primary_red">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:background="@drawable/card"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/card_name"
+                android:text="@string/kartu_makan_jkt"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_regular"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="35dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_rp"
+                android:text="@string/rp"
+                android:fontFamily="@font/poppins_regular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/card_name"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginStart="35dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/saldo"
+                android:text="@string/saldo_value"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_regular"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/card_name"
+                app:layout_constraintStart_toEndOf="@id/tv_rp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/img_wallet"
+                android:src="@drawable/ic_baseline_credit_card_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="40dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:contentDescription="@string/wallet" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/table_order"
+        app:layout_constraintTop_toBottomOf="@id/cardMenu"
+        android:layout_marginTop="20dp" >
+        <TableRow>
+            <TextView
+                android:id="@+id/tv_order"
+                android:text="@string/order"
+                android:textStyle="bold"
+                style="@style/text_style"
+                android:textSize="14sp"
+                android:layout_weight="1"
+                android:gravity="start" />
+            <TextView
+                android:id="@+id/tv_rp1"
+                android:text="@string/rp"
+                style="@style/text_style"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/tv_order_value"
+                android:text="@string/blank"
+                style="@style/text_style"
+                android:gravity="end"
+                android:textSize="14sp" />
+        </TableRow>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/darker_grey"/>
+        <TableRow>
+            <TextView
+                android:id="@+id/tv_order1"
+                android:text="@string/order"
+                android:textStyle="bold"
+                style="@style/text_style"
+                android:textSize="14sp"
+                android:layout_weight="1"
+                android:gravity="start" />
+            <TextView
+                android:id="@+id/tv_rp2"
+                android:text="@string/rp"
+                style="@style/text_style"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/tv_order_value_sum"
+                android:text="@string/blank"
+                style="@style/text_style"
+                android:gravity="end"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+        </TableRow>
+    </TableLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_proceed"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@id/table_order"
+        android:text="@string/proceed_to_pay"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_radius"
+        android:backgroundTint="@color/secondary_red"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
